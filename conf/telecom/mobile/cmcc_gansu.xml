@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<Structure type="geographic_areas">
+  <CountryRegion code="86" id="CHN">
+    <Range prefix="*" provinceId="0025">
+      <Range prefix="136">
+        <Range cityId="025001" prefix="2931,8931"></Range>
+        <Range cityId="025002" prefix="2939,4939,5939,8939"></Range>
+        <Range cityId="025003" prefix="2936,4936,8932,8936"></Range>
+        <Range cityId="025004" prefix="1937,2937,4937,5936-5937,7937,7939,8937,3937"></Range>
+        <Range cityId="025005" prefix="2934,4934,7934"></Range>
+        <Range cityId="025006" prefix="1938,2938,4938,5938,7938,8938,8940,8946-8947,3938"></Range>
+        <Range cityId="025007" prefix="2930,5930,8930"></Range>
+        <Range cityId="025008" prefix="1930,4930,5933,7930-7931,8934,8948-8949,3930"></Range>
+        <Range cityId="025009" prefix="0930-0939,1931-1934,1936,1939,4931,5931-5932,5940-5949,6930-6939,7940-7949,3931-3934,3936,3939"></Range>
+        <Range cityId="025010" prefix="2932,4932,7932"></Range>
+        <Range cityId="025011" prefix="2933,4933,7933,8933"></Range>
+        <Range cityId="025012" prefix="1935,2935,4935,5934-5935,7935-7936,8935,3935"></Range>
+      </Range>
+      <Range prefix="138">
+        <Range cityId="025001" prefix="8405-8409,9390-9399"></Range>
+        <Range cityId="025002" prefix="0939,3090-3099"></Range>
+        <Range cityId="025003" prefix="0936,3060-3069"></Range>
+        <Range cityId="025004" prefix="0937,3010-3019,3070-3079,9370-9379"></Range>
+        <Range cityId="025005" prefix="0934,3040-3049,8410-8419"></Range>
+        <Range cityId="025006" prefix="0938,3080-3089,9380-9389"></Range>
+        <Range cityId="025007" prefix="8400-8404"></Range>
+        <Range cityId="025008" prefix="0930,3000-3009,8420-8429,9300-9309"></Range>
+        <Range cityId="025009" prefix="0931,9310-9349,9360-9369"></Range>
+        <Range cityId="025010" prefix="0932,3020-3029"></Range>
+        <Range cityId="025011" prefix="0933,3030-3039"></Range>
+        <Range cityId="025012" prefix="0935,3050-3059,8450-8459,9350-9359"></Range>
+      </Range>
+      <Range prefix="139">
+        <Range cityId="025001" prefix="0941"></Range>
+        <Range cityId="025002" prefix="0939,9390-9399"></Range>
+        <Range cityId="025003" prefix="0936,9360-9369"></Range>
+        <Range cityId="025004" prefix="0937,0947,9370-9379"></Range>
+        <Range cityId="025005" prefix="0934,9340-9349"></Range>
+        <Range cityId="025006" prefix="0938,9380-9389"></Range>
+        <Range cityId="025007" prefix="0930,9300-9309"></Range>
+        <Range cityId="025008" prefix="0943"></Range>
+        <Range cityId="025009" prefix="0931,0940,0942,0944,0946,0948-0949,1900-1999,9310-9319"></Range>
+        <Range cityId="025010" prefix="0932,9320-9329"></Range>
+        <Range cityId="025011" prefix="0933,9330-9339"></Range>
+        <Range cityId="025012" prefix="0935,0945,9350-9359"></Range>
+      </Range>
+      <Range prefix="135">
+        <Range cityId="025001" prefix="1941-1942"></Range>
+        <Range cityId="025002" prefix="1909,1939"></Range>
+        <Range cityId="025003" prefix="1906,1936"></Range>
+        <Range cityId="025004" prefix="1907,1937,1947-1948"></Range>
+        <Range cityId="025005" prefix="1904,1934"></Range>
+        <Range cityId="025006" prefix="1908,1938"></Range>
+        <Range cityId="025007" prefix="1900,1930"></Range>
+        <Range cityId="025008" prefix="1901,1943"></Range>
+        <Range cityId="025009" prefix="1931,1940,1944,1949,1960-1969"></Range>
+        <Range cityId="025010" prefix="1902,1932"></Range>
+        <Range cityId="025011" prefix="1903,1933"></Range>
+        <Range cityId="025012" prefix="1905,1935,1945-1946"></Range>
+      </Range>
+    </Range>
+  </CountryRegion>
+</Structure>

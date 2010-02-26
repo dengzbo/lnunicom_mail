@@ -1,0 +1,17 @@
+From:$from
+To:$to
+Subject:=?GBK?B?08q8/s+1zbPI1bPMudzA7czh0NE=?=
+Content-Type:text/html;charset=GBK
+
+Hi!<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;$notify_content<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;  your customized events in the calendar management <font color="#FF6600"><strong>$title</strong></font> it's time for appointment<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; the event time£º$time<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp; the content£º$yourcontent<br/>
+<br/>
+<div align="right">calendar management system</div>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xml-config>
+  <managers>
+    <factory name="umc">
+      <manager name="email_account">
+      </manager>
+    </factory>
+    <factory name="business">
+      <manager name="purchase">
+      </manager>
+    </factory>
+  </managers>
+</xml-config>
+

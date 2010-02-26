@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<!--
+关于此文件的修改配置
+一 Distinguished Name (DN) 不用设置
+	LDAP的DN
+	组：domainName, groupName
+	用户：domainName, groupName, userName
+	DB的DN
+	用户：domainId, userId, userName
+二 参数设置
+	参数类型(parameter type)目前只有String, Integer两种类型
+	除了用户添加、用户修改、用户查找之外一般不用设置参数
+
+-->
+<system>
+	<domain name="default" protocol="database">
+		<server>
+			<!--
+			注意：tablename是说明数据库中的表名，必须事先在数据库中建好表
+			-->
+			<parameter name="tablename" value="user_info"/>
+		</server>
+		<method name="group.insert" class="naisa.admin.cf.user.NoneUserAction">
+		</method>
+		<method name="group.update" class="naisa.admin.cf.user.NoneUserAction">
+		</method>
+		<method name="group.delete" class="naisa.admin.cf.user.NoneUserAction">
+		</method>
+		<method name="group.batchdelete" class="naisa.admin.cf.user.DatabaseUserAction">
+		</method>
+		<method name="user.select" class="naisa.admin.cf.user.DatabaseUserAction">
+		</method>
+		<method name="user.insert" class="naisa.admin.cf.user.DatabaseUserAction">
+			<parameter name="question" description="查询密码问题" type="String" required="true" value=""/>
+			<parameter name="answer" description="查询密码答案" type="String" required="true" value=""/>
+			<parameter name="mobile" description="手机号码" type="String" required="true" value=""/>
+			<parameter name="truename" description="真实姓名" type="String" required="true" value=""/>
+			<parameter name="gender" description="性别" type="Integer" required="true" value=""/>
+			<parameter name="birthday" description="出生日期" type="Date" required="true" value=""/>
+			<parameter name="idtype" description="证件类型" type="Integer" required="true" value=""/>
+			<parameter name="idnum" description="证件号码" type="String" required="true" value=""/>
+			<parameter name="education" description="最高学历/教育程度" type="String" required="false" value=""/>
+			<parameter name="occupation" description="行业" type="String" required="false" value=""/>
+			<parameter name="employment" description="职位" type="Integer" required="false" value=""/>
+			<parameter name="income" description="个人月收入"  type="String" required="false" value=""/>
+			<parameter name="homeincome" description="家庭月收入"  type="String" required="false" value=""/>
+			<parameter name="interest" description="个人兴趣爱好"  type="String" required="false" value=""/>
+			<parameter name="province"  description="省份"  type="String" required="false" value=""/>
+			<parameter name="city" description="城市" type="String" required="false" value=""/>
+			<parameter name="homeaddress" description="住址/邮政地址" type="String" required="false" value=""/>
+			<parameter name="postcode" description="邮政编码" type="String" required="false" value=""/>
+			<parameter name="email" description="电子邮箱" type="String" required="false" value=""/>
+			<parameter name="homephone" description="联系电话" type="String" required="false" value=""/>
+		    <!--parameter name="mobileua" description="手机型号" type="String" required="false" value=""/-->
+    </method>
+		<method name="user.update" class="naisa.admin.cf.user.DatabaseUserAction">
+			<parameter name="question" description="查询密码问题" type="String" required="true" value=""/>
+			<parameter name="answer" description="查询密码答案" type="String" required="true" value=""/>
+			<parameter name="mobile" description="手机号码" type="String" required="true" value=""/>
+			<parameter name="truename" description="真实姓名" type="String" required="true" value=""/>
+			<parameter name="gender" description="性别" type="Integer" required="true" value=""/>
+			<parameter name="birthday" description="出生日期" type="Date" required="true" value=""/>
+			<parameter name="idtype" description="证件类型" type="Integer" required="true" value=""/>
+			<parameter name="idnum" description="证件号码" type="String" required="true" value=""/>
+			<parameter name="education" description="最高学历/教育程度" type="String" required="false" value=""/>
+			<parameter name="occupation" description="行业" type="String" required="false" value=""/>
+			<parameter name="employment" description="职位" type="Integer" required="false" value=""/>
+			<parameter name="income" description="个人月收入"  type="String" required="false" value=""/>
+			<parameter name="homeincome" description="家庭月收入"  type="String" required="false" value=""/>
+			<parameter name="interest" description="个人兴趣爱好"  type="String" required="false" value=""/>
+			<parameter name="province"  description="省份"  type="String" required="false" value=""/>
+			<parameter name="city" description="城市" type="String" required="false" value=""/>
+			<parameter name="homeaddress" description="住址/邮政地址" type="String" required="false" value=""/>
+			<parameter name="postcode" description="邮政编码" type="String" require="false" value=""/>
+			<parameter name="email" description="电子邮箱" type="String" required="false" value=""/>
+			<parameter name="homephone" description="联系电话" type="String" required="false" value=""/>
+			<!--parameter name="mobileua" description="手机型号" type="String" required="false" value=""/-->
+    </method>
+		<method name="user.search" class="naisa.admin.cf.user.DatabaseUserAction">
+			<parameter name="username" description="用户名" type="String" required="true" value=""/>
+			<parameter name="truename" description="真实姓名" type="String" required="false" value=""/>
+			<parameter name="gender" description="性别" type="Integer" required="false" value=""/>
+			<parameter name="birthday" description="出生日期" type="Date" required="false" value=""/>
+			<parameter name="mobile" description="手机号码" type="String" required="false" value=""/>
+			<parameter name="idtype" description="证件类型" type="Integer" required="false" value=""/>
+			<parameter name="idnum" description="证件号码" type="String" required="false" value=""/>
+			<parameter name="education" description="最高学历/教育程度" type="String" required="false" value=""/>
+			<parameter name="occupation" description="行业" type="String" required="false" value=""/>
+			<parameter name="employment" description="职位" type="Integer" required="false" value=""/>
+			<parameter name="income" description="个人月收入"  type="String" required="false" value=""/>
+			<parameter name="homeincome" description="家庭月收入"  type="String" required="false" value=""/>
+			<parameter name="interest" description="个人兴趣爱好"  type="String" required="false" value=""/>
+			<parameter name="province"  description="省份"  type="String" required="false" value=""/>
+			<parameter name="city" description="城市" type="String" required="false" value=""/>
+			<parameter name="homeaddress" description="住址/邮政地址" type="String" required="false" value=""/>
+			<parameter name="postcode" description="邮政编码" type="String" require="false" value=""/>
+			<parameter name="email" description="电子邮箱" type="String" required="false" value=""/>
+			<parameter name="homephone" description="联系电话" type="String" required="false" value=""/>
+			<!--parameter name="mobileua" description="手机型号" type="String" required="false" value=""/-->
+    </method>
+		<method name="user.delete" class="naisa.admin.cf.user.DatabaseUserAction">
+		</method>
+		<method name="user.password" class="naisa.admin.cf.user.DatabaseUserAction">
+		</method>
+		<method name="user.batchdelete" class="naisa.admin.cf.user.DatabaseUserAction">
+		</method>
+	</domain>
+</system>

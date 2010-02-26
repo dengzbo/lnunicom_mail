@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+    <sync>
+        <clients>
+            <client group="webmail" name="app" send="business_account" url="nns://127.0.0.1:9188/sync_server" run="server">
+	       <listener class="com.ceno.commons.frame.sync.listener.SyncProtocolListener"></listener>
+            </client>
+        </clients>
+    </sync>
+</xml-config>

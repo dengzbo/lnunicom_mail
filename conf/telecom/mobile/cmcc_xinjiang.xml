@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<Structure type="geographic_areas">
+  <CountryRegion code="86" id="CHN">
+    <Range prefix="*" provinceId="0031">
+      <Range prefix="136">
+        <Range cityId="031001" prefix="1999,2997,8996-8999"></Range>
+        <Range cityId="031002" prefix="4998,7750-7752"></Range>
+        <Range cityId="031003" prefix="4996,7998-7999"></Range>
+        <Range cityId="031004" prefix="4995,9990-9992"></Range>
+        <Range cityId="031005" prefix="4999,7753-7756"></Range>
+        <Range cityId="031006" prefix="1998,2998,5750-5751,5753-5755"></Range>
+        <Range cityId="031007" prefix="0990-0993,0995-0999,1990-1994,2990-2994,5990-5999,6990-6999,9995-9999,3990-3997"></Range>
+        <Range cityId="031008" prefix="4993,6759"></Range>
+        <Range cityId="031009" prefix="1997,2999,7990-7995"></Range>
+        <Range cityId="031010" prefix="1995,2996,6750-6756,3999"></Range>
+        <Range cityId="031011" prefix="4997,5752,5756-5759"></Range>
+        <Range cityId="031012" prefix="4991,9993-9994"></Range>
+        <Range cityId="031013" prefix="4994,6757-6758"></Range>
+        <Range cityId="031014" prefix="4990,7757-7759"></Range>
+        <Range cityId="031015" prefix="0994,1996,2995,8990-8995,3998"></Range>
+        <Range cityId="031016" prefix="4992,7996-7997"></Range>
+      </Range>
+      <Range prefix="138">
+        <Range cityId="031001" prefix="9956-9959"></Range>
+        <Range cityId="031002" prefix="0992,9954-9955"></Range>
+        <Range cityId="031003" prefix="0997,9937-9939"></Range>
+        <Range cityId="031004" prefix="9930-9932"></Range>
+        <Range cityId="031005" prefix="9950-9953"></Range>
+        <Range cityId="031006" prefix="9910-9919"></Range>
+        <Range cityId="031007" prefix="0991,0993-0995,9980-9999"></Range>
+        <Range cityId="031008" prefix="9948-9949"></Range>
+        <Range prefix="0998">
+            <Range cityId="031008" prefix="5-9"></Range>
+        </Range>
+        <Range cityId="031009" prefix="9970-9979"></Range>
+        <Range cityId="031010" prefix="9900-9909"></Range>
+        <Range cityId="031011" prefix="9920-9929"></Range>
+        <Range cityId="031012" prefix="0996,9940-9942"></Range>
+        <Range cityId="031013" prefix="9945-9947"></Range>
+        <Range prefix="0998">
+            <Range cityId="031013" prefix="0-4"></Range>
+        </Range>
+        <Range cityId="031014" prefix="0990,9933-9936"></Range>
+        <Range cityId="031015" prefix="9960-9969"></Range>
+        <Range cityId="031016" prefix="0999,9943-9944"></Range>
+      </Range>
+      <Range prefix="139">
+        <Range cityId="031001" prefix="0990,9930-9931,9950-9952"></Range>
+        <Range cityId="031002" prefix="9970-9972"></Range>
+        <Range cityId="031003" prefix="9948-9949,9974-9975"></Range>
+        <Range cityId="031004" prefix="0995,9904,9946-9947,9969"></Range>
+        <Range cityId="031005" prefix="0993,9932-9933,9953,9973"></Range>
+        <Range cityId="031006" prefix="0998,9908-9909,9963-9964"></Range>
+        <Range cityId="031007" prefix="0991-0992,9910-9929,9940-9942,9980-9999"></Range>
+        <Range cityId="031009" prefix="0999,9937-9939,9957-9959"></Range>
+        <Range cityId="031010" prefix="0996,9900-9902,9960-9962"></Range>
+        <Range cityId="031011" prefix="0997,9906-9907,9966-9967"></Range>
+        <Range cityId="031012" prefix="9945,9978-9979"></Range>
+        <Range cityId="031013" prefix="9905,9943,9965"></Range>
+        <Range cityId="031014" prefix="9903,9944,9968"></Range>
+        <Range cityId="031015" prefix="0994,9934-9936,9954-9956"></Range>
+        <Range cityId="031016" prefix="9976-9977"></Range>
+      </Range>
+      <Range prefix="135">
+        <Range cityId="031001" prefix="1990-1991,6545-6546,7950-7953"></Range>
+        <Range cityId="031002" prefix="1994-1995,6556-6557,6572,7915-7917"></Range>
+        <Range cityId="031003" prefix="6527-6529,6578,7978-7979"></Range>
+        <Range cityId="031004" prefix="6558-6559,6571,7954-7955"></Range>
+        <Range cityId="031005" prefix="1992-1993,6554-6555,6573,7945,7974-7977"></Range>
+        <Range cityId="031006" prefix="6537-6539,6565-6567,7905-7909,7930-7934"></Range>
+        <Range cityId="031007" prefix="6540-6544,6580-6599,7920-7929,7940-7943,7980-7999"></Range>
+        <Range cityId="031008" prefix="7956-7957"></Range>
+        <Range cityId="031009" prefix="1998-1999,6520-6526,6547-6548,7970-7973"></Range>
+        <Range cityId="031010" prefix="6500-6509,6574-6576,7900-7904,7948-7949"></Range>
+        <Range cityId="031011" prefix="6510-6516,6568-6569,7910-7914,7935-7939"></Range>
+        <Range cityId="031012" prefix="6517-6518,6579,7918-7919"></Range>
+        <Range cityId="031013" prefix="6549,6552-6553,7968-7969"></Range>
+        <Range cityId="031014" prefix="6519,6570,7944,7965-7967"></Range>
+        <Range cityId="031015" prefix="1996,6530-6536,6560-6564,7946-7947,7960-7964"></Range>
+        <Range cityId="031016" prefix="1997,6550-6551,6577,7958-7959"></Range>
+      </Range>
+      <Range prefix="137">
+        <Range cityId="031001" prefix="0990"></Range>
+        <Range cityId="031002" prefix="0992,09935-09939"></Range>
+        <Range cityId="031005" prefix="09930-09934"></Range>
+        <Range cityId="031006" prefix="0998"></Range>
+        <Range cityId="031007" prefix="0991"></Range>
+        <Range cityId="031009" prefix="0999"></Range>
+        <Range cityId="031010" prefix="0995-0996"></Range>
+        <Range cityId="031011" prefix="0997"></Range>
+        <Range cityId="031015" prefix="0994"></Range>
+      </Range>
+    </Range>
+  </CountryRegion>
+</Structure>

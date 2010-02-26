@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+    <telecom>
+        <operators>
+            <operator id="cmcc" name="中国移动" >
+                <network id="GSM"/>
+                <network id="GPRS"/>
+                <service id="sms"/>
+                <service id="mms"/>
+               <!-- <service id="WAP"/>-->
+            </operator>
+	    <operator id="chinatelecom" name="中国电信" >
+                <network id="PHS"/>
+                <service id="sms"/>
+            </operator>
+            <operator id="unicom" name="中国联通" >
+                <network id="GSM"/>
+                <network id="CDMAONE"/>
+                <network id="CDMA2000"/>
+                <service id="sms"/>
+              <!--  <service id="WAP"/>-->
+              <!--  <service id="MME"/>-->
+            </operator>
+        </operators>
+        <networks>
+            <network id="GSM" name="GSM"></network>
+            <network id="GPRS" name="GPRS"></network>
+            <network id="CDMAONE" name="CDMAONE"></network>
+            <network id="CDMA2000" name="CDMA2000"></network>
+            <network id="WCDMA" name="WCDMA"></network>
+            <network id="TDSCDMA" name="TDSCDMA"></network>
+            <network id="PHS" name="PHS"></network>
+        </networks>
+        <services>
+            <service id="sms" name="短信"/>
+            <service id="mms" name="彩信"/>
+            <service id="wap" name="WAP业务"/>
+            <service id="email" name="邮件服务"/>
+            <service id="mme" name="彩e"/>
+        </services>
+    </telecom>
+    <modules>
+        <module name="telecom_network"/>
+        <module name="telecom_service"/>
+        <module name="telecom_operator"/>
+        <module name="telecom_number"/>
+    </modules>
+</xml-config>

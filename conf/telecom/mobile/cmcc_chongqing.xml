@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<Structure type="geographic_areas">
+  <CountryRegion code="86" id="CHN">
+    <Range prefix="*" provinceId="0004">
+      <Range prefix="136">
+        <Range cityId="004001" prefix="0946-0947,2824-2827,4845-4849,5825-5828,5840-5842,5843-5849,3822-3825"></Range>
+        <Range cityId="004003" prefix="0948-0949,2828-2829,4828-4829,5829,4820-4827,3820-3821"></Range>
+        <Range cityId="004004" prefix="0830-0839,0940-0942,1820-1839,2830-2839,2844-2849,4830-4832,4840-4844,5050-5059,5830-5839,1760-1769,2760-2769,4050-4059,4760-4769,4833-4839,5760-5769,6760-6769,6800-6809,7760-7769,7840-7849,3540-3549,3770-3799,3830-3839"></Range>
+        <Range cityId="004005" prefix="0943-0945,2820-2823,2840-2843,5820-5824,6842-6849,6840-6841,3530-3539,3826-3829"></Range>
+      </Range>
+      <Range prefix="138">
+        <Range cityId="004001" prefix="9650-9679"></Range>
+        <Range cityId="004003" prefix="9640-9649,9680-9689"></Range>
+        <Range cityId="004004" prefix="0830-0839,8300-8399,9600-9619"></Range>
+        <Range cityId="004005" prefix="9620-9639,9690-9699"></Range>
+      </Range>
+      <Range prefix="139">
+        <Range cityId="004001" prefix="0825,8330-8334,8358-8359,9670-9689"></Range>
+        <Range cityId="004003" prefix="0827,8356-8357,9690-9699"></Range>
+        <Range cityId="004004" prefix="0830-0839,8300-8329,8335-8349,8360-8399,9600-9649"></Range>
+        <Range cityId="004005" prefix="0826,8350-8355,9650-9669"></Range>
+      </Range>
+      <Range prefix="135">
+        <Range cityId="004001" prefix="0946,1231,9450-9459"></Range>
+        <Range cityId="004002" prefix="1232,9440-9449"></Range>
+        <Range cityId="004003" prefix="1230,9490-9499"></Range>
+        <Range cityId="004004" prefix="0030-0039,0830-0839,0940-0942,0947-0949,1233-1239,9400-9439,9460-9469,2730-2759"></Range>
+        <Range cityId="004005" prefix="0943-0945,9470-9489"></Range>
+      </Range>
+      <Range prefix="137">
+        <Range cityId="004001" prefix="0946-0947"></Range>
+        <Range cityId="004003" prefix="0948-0949"></Range>
+        <Range cityId="004004" prefix="0830-0839,0940-0942,5280-5299"></Range>
+        <Range cityId="004005" prefix="0943-0945"></Range>
+      </Range>
+    </Range>
+  </CountryRegion>
+</Structure>

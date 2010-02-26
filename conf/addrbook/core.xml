@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+  <jade-conf>
+    <node base="addrbook">
+      <property name="config-file" value="/ares/umail/conf/addrbook/managers.xml"/>
+    </node>
+  </jade-conf>
+  <mod-def>
+    <module name="addrbook" config="addrbook"
+            class="com.ceno.sandbox.email.addrbook.impl.AddrbookModuleImpl"/>
+  </mod-def>
+  <modules>
+    <module name="addrbook"/>
+  </modules>
+</xml-config>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+    <zone-def>
+        <zone>
+            <country id="CHN" code="86" name="中国">
+                <province id="0001" code="010" name="北京市">
+                    <city id="010001" code="010" name="北京市"/>
+                </province>
+                <province id="0002" code="021" name="上海市">
+                    <city id="002001" code="021" name="上海市"/>
+                </province>
+                <province id="0003" name="天津市">
+                    <city id="003001" code="022" name="天津市"/>
+                </province>
+                <province id="0004" name="重庆市">
+                    <city id="004001" code="023" name="重庆市"/>
+                    <city id="004002" code="023" name="黔江市"/>
+                    <city id="004003" code="023" name="涪陵市"/>
+                    <city id="004004" code="023" name="万州市"/>
+                    <city id="004005" code="023" name="万县"/>
+                </province>
+                <province id="0005" name="黑龙江省">
+                    <city id="005001" code="0453" name="牡丹江"/>
+                    <city id="005002" code="0454" name="佳木斯"/>
+                    <city id="005003" code="0458" name="绥化"/>
+                    <city id="005004" code="0456" name="黑河"/>
+                    <city id="005005" code="0451" name="哈尔滨"/>
+                    <city id="005006" code="0452" name="齐齐哈尔"/>
+                    <city id="005007" code="0459" name="大庆"/>
+                </province>
+                <province id="0006" name="吉林省">
+                    <city id="006001" code="0431" name="长春"/>
+                    <city id="006002" code="0432" name="吉林市"/>
+                    <city id="006003" code="0433" name="延吉市"/>
+                    <city id="006004" code="0434" name="四平"/>
+                    <city id="006005" code="0435" name="通化"/>
+                    <city id="006006" code="0448" name="梅河口"/>
+                    <city id="006007" code="0436" name="白城"/>
+                    <city id="006008" code="0437" name="辽远"/>
+                    <city id="006009" code="0438" name="松原"/>
+                    <city id="006010" code="0439" name="白山"/>
+                    <city id="006011" code="0440" name="珲春"/>
+                </province>
+                <province id="0007" name="辽宁省">
+                    <city id="007001" code="024" name="沈阳"/>
+                    <city id="007002" code="0411" name="大连"/>
+                    <city id="007003" code="0412" name="鞍山市"/>
+                    <city id="007004" code="0413" name="抚顺市"/>
+                    <city id="007005" code="0414" name="本溪市"/>
+                    <city id="007006" code="0415" name="丹东市"/>
+                    <city id="007007" code="0416" name="锦州"/>
+                    <city id="007008" code="0417" name="营口"/>
+                    <city id="007009" code="0418" name="阜新"/>
+                    <city id="007010" code="0419" name="辽阳"/>
+                    <city id="007011" code="0410" name="铁岭"/>
+                    <city id="007012" code="0427" name="盘锦"/>
+                    <city id="007013" code="0421" name="朝阳"/>
+                    <city id="007014" code="0429" name="葫芦岛"/>
+                </province>
+                <province id="0008" name="内蒙古自治区">
+                    <city id="008001" code="0471" name="呼和浩特"/>
+                    <city id="008002" code="0472" name="包头"/>
+                    <city id="008003" code="0474" name="集宁"/>
+                    <city id="008004" code="0477" name="鄂尔多斯"/>
+                    <city id="008005" code="0478" name="临河"/>
+                    <city id="008006" code="0479" name="锡林浩特"/>
+                    <city id="008007" code="0470" name="海拉尔"/>
+                    <city id="008008" code="0476" name="赤峰"/>
+                    <city id="008009" code="0475" name="通辽"/>
+                    <city id="008010" code="0482" name="乌兰浩特"/>
+                    <city id="008011" code="0473" name="乌海"/>
+                    <city id="008012" code="0483" name="巴彦浩特"/>
+                </province>
+                <province id="0009" name="河北省">
+                    <city id="009001" code="0311" name="石家庄"/>
+                    <city id="009002" code="0312" name="保定市"/>
+                    <city id="009003" code="0319" name="邢台市"/>
+                    <city id="009004" code="0318" name="衡水市"/>
+                    <city id="009005" code="0310" name="邯郸市"/>
+                    <city id="009006" code="0313" name="张家口市"/>
+                    <city id="009007" code="0314" name="承德市"/>
+                    <city id="009008" code="0335" name="秦皇岛市"/>
+                    <city id="009009" code="0315" name="唐山市"/>
+                    <city id="009010" code="0316" name="廊坊市"/>
+                    <city id="009011" code="0317" name="沧州市"/>
+                </province>
+                <province id="0010" name="河南省">
+                    <city id="010001" code="0371" name="郑州市"/>
+                    <city id="010002" code="0372" name="安阳市"/>
+                    <city id="010003" code="0398" name="三门峡市"/>
+                    <city id="010004" code="0377" name="南阳市"/>
+                    <city id="010005" code="0378" name="开封市"/>
+                    <city id="010006" code="0379" name="洛阳市"/>
+                    <city id="010007" code="0370" name="商丘市"/>
+                    <city id="010008" code="0391" name="焦作市"/>
+                    <city id="010009" code="0392" name="鹤壁市"/>
+                    <city id="010010" code="0395" name="漯河市"/>
+                    <city id="010011" code="0396" name="驻马店市"/>
+                    <city id="010012" code="0394" name="周口市"/>
+                    <city id="010013" code="0376" name="信阳市"/>
+                    <city id="010014" code="0373" name="新乡市"/>
+                    <city id="010015" code="0375" name="平顶山市"/>
+                    <city id="010016" code="0374" name="许昌市"/>
+                    <city id="010017" code="0393" name="濮阳市"/>
+                    <city id="010018" code="0397" name="潢川市"/>
+                </province>
+                <province id="0011" name="广东省">
+                    <city id="011001" code="0753" name="梅州市"/>
+                    <city id="011002" code="0756" name="珠海市"/>
+                    <city id="011003" code="0760" name="中山市"/>
+                    <city id="011004" code="0660" name="汕尾市"/>
+                    <city id="011005" code="0663" name="揭阳市"/>
+                    <city id="011006" code="0766" name="云浮市"/>
+                    <city id="011007" code="020" name="广州市"/>
+                    <city id="011008" code="0751" name="韶关市"/>
+                    <city id="011009" code="0752" name="惠州市"/>
+                    <city id="011010" code="0755" name="深圳市"/>
+                    <city id="011011" code="0757" name="佛山市"/>
+                    <city id="011012" code="0758" name="肇庆市"/>
+                    <city id="011013" code="0754" name="汕头市"/>
+                    <city id="011014" code="0759" name="湛江市"/>
+                    <city id="011015" code="0769" name="东莞市"/>
+                    <city id="011016" code="0668" name="茂名市"/>
+                    <city id="011017" code="0750" name="江门市"/>
+                    <city id="011018" code="0763" name="清远市"/>
+                    <city id="011019" code="0762" name="河源市"/>
+                    <city id="011021" code="0768" name="潮州市"/>
+                    <city id="011022" code="0662" name="阳江市"/>
+                </province>
+                <province id="0012" name="湖北省">
+                    <city id="012001" code="027" name="武汉市"/>
+                    <city id="012002" code="0711" name="鄂州市"/>
+                    <city id="012003" code="0712" name="孝感市"/>
+                    <city id="012004" code="0713" name="黄冈市"/>
+                    <city id="012005" code="0714" name="黄石市"/>
+                    <city id="012006" code="0715" name="咸宁市"/>
+                    <city id="012007" code="0717" name="宜昌市"/>
+                    <city id="012008" code="0728" name="江汉市"/>
+                    <city id="012009" code="0716" name="荆州市"/>
+                    <city id="012010" code="0718" name="恩施市"/>
+                    <city id="012011" code="0719" name="十堰市"/>
+                    <city id="012012" code="0724" name="荆门市"/>
+                    <city id="012013" code="0710" name="襄樊市"/>
+                    <city id="012014" code="0722" name="随州市"/>
+                </province>
+                <province id="0013" name="山东省">
+                    <city id="013001" code="0532" name="青岛市"/>
+                    <city id="013002" code="0533" name="淄博市"/>
+                    <city id="013003" code="0535" name="烟台市"/>
+                    <city id="013004" code="0537" name="济宁市"/>
+                    <city id="013005" code="0538" name="泰安市"/>
+                    <city id="013006" code="0530" name="菏泽市"/>
+                    <city id="013007" code="0631" name="威海市"/>
+                    <city id="013008" code="0632" name="枣庄市"/>
+                    <city id="013009" code="0543" name="滨州市"/>
+                    <city id="013010" code="0539" name="临沂市"/>
+                    <city id="013011" code="0634" name="莱芜市"/>
+                    <city id="013012" code="0534" name="德州市"/>
+                    <city id="013013" code="0635" name="聊城市"/>
+                    <city id="013014" code="0531" name="济南市"/>
+                    <city id="013015" code="0536" name="潍坊市"/>
+                    <city id="013016" code="0633" name="日照市"/>
+                    <city id="013017" code="0546" name="东营市"/>
+                </province>
+                <province id="0014" name="浙江省">
+                    <city id="014001" code="0571" name="杭州市"/>
+                    <city id="014002" code="0572" name="湖州市"/>
+                    <city id="014003" code="0573" name="嘉兴市"/>
+                    <city id="014004" code="0574" name="宁波市"/>
+                    <city id="014005" code="0575" name="绍兴市"/>
+                    <city id="014006" code="0576" name="台州市"/>
+                    <city id="014007" code="0577" name="温州市"/>
+                    <city id="014008" code="0578" name="丽水市"/>
+                    <city id="014009" code="0579" name="金华市"/>
+                    <city id="014010" code="0570" name="衢州市"/>
+                    <city id="014011" code="0580" name="舟山市"/>
+                </province>
+                <province id="0015" name="安徽省">
+                    <city id="015001" code="0551" name="合肥市"/>
+                    <city id="015002" code="0552" name="蚌埠市"/>
+                    <city id="015003" code="0553" name="芜湖市"/>
+                    <city id="015004" code="0554" name="淮南市"/>
+                    <city id="015005" code="0556" name="安庆市"/>
+                    <city id="015006" code="0557" name="宿州市"/>
+                    <city id="015007" code="0558" name="阜阳市"/>
+                    <city id="015008" code="0559" name="黄山市"/>
+                    <city id="015009" code="0555" name="马鞍山市"/>
+                    <city id="015010" code="0550" name="滁州市"/>
+                    <city id="015011" code="0566" name="池州市"/>
+                    <city id="015012" code="0561" name="淮北市"/>
+                    <city id="015013" code="0562" name="铜陵市"/>
+                    <city id="015014" code="0565" name="巢湖市"/>
+                    <city id="015015" code="0563" name="宣城市"/>
+                    <city id="015016" code="0564" name="六安市"/>
+                </province>
+                <province id="0016" name="江苏省">
+                    <city id="016001" code="025" name="南京市"/>
+                    <city id="016002" code="0512" name="苏州市"/>
+                    <city id="016003" code="0510" name="无锡市"/>
+                    <city id="016004" code="0519" name="常州市"/>
+                    <city id="016005" code="0511" name="镇江市"/>
+                    <city id="016006" code="0516" name="徐州市"/>
+                    <city id="016007" code="0514" name="扬州市"/>
+                    <city id="016008" code="0523" name="泰州市"/>
+                    <city id="016009" code="0517" name="淮安市"/>
+                    <city id="016010" code="0518" name="连云港市"/>
+                    <city id="016011" code="0527" name="宿迁市"/>
+                    <city id="016012" code="0513" name="南通市"/>
+                    <city id="016013" code="0515" name="盐城市"/>
+                </province>
+                <province id="0017" name="江西省">
+                    <city id="017001" code="0791" name="南昌市"/>
+                    <city id="017002" code="0794" name="抚州市"/>
+                    <city id="017003" code="0792" name="九江市"/>
+                    <city id="017004" code="0793" name="上饶市"/>
+                    <city id="017005" code="0795" name="宜春市"/>
+                    <city id="017006" code="0796" name="吉安市"/>
+                    <city id="017007" code="0797" name="赣州市"/>
+                    <city id="017008" code="0798" name="景德镇"/>
+                    <city id="017009" code="0799" name="萍乡市"/>
+                    <city id="017010" code="0790" name="新余市"/>
+                    <city id="017011" code="0701" name="鹰潭市"/>
+                </province>
+                <province id="0018" name="云南省">
+                    <city id="018001" code="0871" name="昆明市"/>
+                    <city id="018002" code="0872" name="大理市"/>
+                    <city id="018003" code="0873" name="红河市"/>
+                    <city id="018004" code="0874" name="曲靖市"/>
+                    <city id="018005" code="0875" name="保山市"/>
+                    <city id="018006" code="0876" name="文山市"/>
+                    <city id="018007" code="0877" name="玉溪市"/>
+                    <city id="018008" code="0878" name="楚雄市"/>
+                    <city id="018009" code="0879" name="思茅市"/>
+                    <city id="018010" code="0691" name="版纳市"/>
+                    <city id="018011" code="0692" name="德宏市"/>
+                    <city id="018012" code="0887" name="迪庆市"/>
+                    <city id="018013" code="0886" name="怒江市"/>
+                    <city id="018014" code="0883" name="临沧市"/>
+                    <city id="018015" code="0888" name="丽江市"/>
+                    <city id="018016" code="0870" name="昭通市"/>
+                </province>
+                <province id="0019" name="宁夏回族自治区">
+                    <city id="019001" code="0951" name="银川市"/>
+                    <city id="019002" code="0952" name="石嘴山市"/>
+                    <city id="019003" code="0953" name="吴忠市"/>
+                    <city id="019004" code="0954" name="固原市"/>
+                </province>
+                <province id="0020" name="青海省">
+                    <city id="971" code="020001" name="西宁"/>
+                    <city id="972" code="020002" name="海东"/>
+                    <city id="973" code="020003" name="黄南"/>
+                    <city id="974" code="020004" name="共和"/>
+                    <city id="975" code="020005" name="果洛"/>
+                    <city id="976" code="020006" name="玉树"/>
+                    <city id="977" code="020007" name="德令哈"/>
+                    <city id="979" code="020008" name="格尔木"/>
+                    <city id="970" code="020009" name="海晏"/>
+                </province>
+                <province id="0021" name="山西省">
+                    <city id="021001" code="0351" name="太原市"/>
+                    <city id="021002" code="0352" name="大同市"/>
+                    <city id="021003" code="0353" name="阳泉市"/>
+                    <city id="021004" code="0354" name="晋中市"/>
+                    <city id="021005" code="0355" name="长治市"/>
+                    <city id="021006" code="0356" name="晋城市"/>
+                    <city id="021007" code="0357" name="临汾市"/>
+                    <city id="021008" code="0358" name="吕梁市"/>
+                    <city id="021009" code="0359" name="运城市"/>
+                    <city id="021010" code="0350" name="忻州市"/>
+                    <city id="021011" code="0349" name="朔州市"/>
+                </province>
+                <province id="0022" name="陕西省">
+                    <city id="022001" code="029" name="西安市"/>
+                    <city id="022002" code="0911" name="延安市"/>
+                    <city id="022003" code="0912" name="榆林市"/>
+                    <city id="022004" code="0913" name="渭南市"/>
+                    <city id="022005" code="0914" name="商洛市"/>
+                    <city id="022006" code="0915" name="安康市"/>
+                    <city id="022007" code="0919" name="铜川市"/>
+                    <city id="022008" code="0916" name="汉中市"/>
+                    <city id="022009" code="0917" name="宝鸡市"/>
+                    <city id="022010" code="0910" name="咸阳市"/>
+                </province>
+                <province id="0023" name="湖南省">
+                    <city id="023001" code="0731" name="长沙市"/>
+                    <city id="023002" code="0732" name="湘潭市"/>
+                    <city id="023003" code="0733" name="株洲市"/>
+                    <city id="023004" code="0734" name="衡阳市"/>
+                    <city id="023005" code="0735" name="郴州市"/>
+                    <city id="023006" code="0736" name="常德市"/>
+                    <city id="023007" code="0737" name="益阳市"/>
+                    <city id="023008" code="0738" name="娄底市"/>
+                    <city id="023009" code="0739" name="邵阳市"/>
+                    <city id="023010" code="0730" name="岳阳市"/>
+                    <city id="023011" code="0743" name="吉首市"/>
+                    <city id="023012" code="0744" name="张家界"/>
+                    <city id="023013" code="0746" name="永州市"/>
+                    <city id="023014" code="0745" name="怀化市"/>
+                </province>
+                <province id="0024" name="福建省">
+                    <city id="024001" code="0591" name="福州市"/>
+                    <city id="024002" code="0592" name="厦门市"/>
+                    <city id="024003" code="0593" name="宁德市"/>
+                    <city id="024004" code="0594" name="莆田市"/>
+                    <city id="024005" code="0595" name="泉州市"/>
+                    <city id="024006" code="0596" name="漳州市"/>
+                    <city id="024007" code="0597" name="龙岩市"/>
+                    <city id="024008" code="0598" name="三明市"/>
+                    <city id="024009" code="0599" name="南平市"/>
+                </province>
+                <province id="0025" name="甘肃省">
+                    <city id="025001" code="0931" name="兰州市"/>
+                    <city id="025002" code="0932" name="定西市"/>
+                    <city id="025003" code="0933" name="平凉市"/>
+                    <city id="025004" code="0934" name="庆阳市"/>
+                    <city id="025005" code="0935" name="金昌武威市"/>
+                    <city id="025006" code="0936" name="张掖市"/>
+                    <city id="025007" code="0937" name="酒泉嘉峪关市"/>
+                    <city id="025008" code="0938" name="天水市"/>
+                    <city id="025009" code="0939" name="陇南市"/>
+                    <city id="025010" code="0930" name="临夏市"/>
+                    <city id="025011" code="0941" name="甘南市"/>
+                    <city id="025013" code="0943" name="白银市"/>
+                </province>
+                <province id="0026" name="四川省">
+                    <city id="026021" code="028" name="成都市"/>
+                    <city id="026001" code="0812" name="攀枝花市"/>
+                    <city id="026002" code="0813" name="自贡市"/>
+                    <city id="026003" code="0816" name="绵阳市"/>
+                    <city id="026004" code="0817" name="南充市"/>
+                    <city id="026005" code="0818" name="达州市"/>
+                    <city id="026006" code="0825" name="遂宁市"/>
+                    <city id="026007" code="0826" name="广安市"/>
+                    <city id="026008" code="0827" name="巴中市"/>
+                    <city id="026009" code="0830" name="泸州市"/>
+                    <city id="026010" code="0831" name="宜宾市"/>
+                    <city id="026011" code="0832" name="内江市"/>
+                    <city id="026012" code="0832" name="资阳市"/>
+                    <city id="026013" code="0833" name="乐山市"/>
+                    <city id="026014" code="0833" name="眉山市"/>
+                    <city id="026015" code="0834" name="凉山市"/>
+                    <city id="026016" code="0835" name="雅安市"/>
+                    <city id="026017" code="0836" name="甘孜市"/>
+                    <city id="026018" code="0837" name="阿坝市"/>
+                    <city id="026019" code="0838" name="德阳市"/>
+                    <city id="026020" code="0839" name="广元市"/>
+                </province>
+                <province id="0027" name="广西壮族自治区">
+                    <city id="027010" code="0770" name="防城港市"/>
+                    <city id="027001" code="0771" name="南宁市"/>
+                    <city id="027002" code="0772" name="柳州市"/>
+                    <city id="027003" code="0773" name="桂林市"/>
+                    <city id="027004" code="0774" name="梧州市"/>
+                    <city id="027005" code="0775" name="玉林市"/>
+                    <city id="027006" code="0776" name="百色市"/>
+                    <city id="027007" code="0777" name="钦州市"/>
+                    <city id="027008" code="0778" name="河池市"/>
+                    <city id="027009" code="0779" name="北海市"/>
+                </province>
+                <province id="0028" name="贵州省">
+                    <city id="028010" code="0851" name="贵阳市"/>
+                    <city id="028001" code="0852" name="遵义市"/>
+                    <city id="028002" code="0853" name="安顺市"/>
+                    <city id="028003" code="0854" name="都匀市"/>
+                    <city id="028004" code="0855" name="凯里市"/>
+                    <city id="028005" code="0856" name="铜仁市"/>
+                    <city id="028006" code="0857" name="毕节市"/>
+                    <city id="028007" code="0858" name="六盘水市"/>
+                    <city id="028008" code="0859" name="兴义市"/>
+                </province>
+                <province id="0029" name="海南省">
+                    <city id="029001" code="0898" name="海口市"/>
+                </province>
+                <province id="0030" name="西藏自治区">
+                    <city id="030001" code="0892" name="日喀则市"/>
+                    <city id="030002" code="0893" name="山南市"/>
+                    <city id="030003" code="0894" name="林芝市"/>
+                    <city id="030004" code="0895" name="昌都市"/>
+                    <city id="030005" code="0896" name="那曲市"/>
+                    <city id="030006" code="0897" name="阿里市"/>
+                    <city id="030007" code="0891" name="拉萨市"/>
+                </province>
+                <province id="0031" name="新疆维吾尔族自治区">
+                    <city id="031016" code="0901" name="塔城市"/>
+                    <city id="031001" code="0902" name="哈密市"/>
+                    <city id="031002" code="0903" name="和田市"/>
+                    <city id="031003" code="0906" name="阿勒泰市"/>
+                    <city id="031004" code="0909" name="博乐市"/>
+                    <city id="031005" code="0990" name="克拉玛依市"/>
+                    <city id="031006" code="0991" name="乌鲁木齐市"/>
+                    <city id="031007" code="0992" name="奎屯市"/>
+                    <city id="031008" code="0993" name="石河子市"/>
+                    <city id="031009" code="0994" name="昌吉市"/>
+                    <city id="031010" code="0995" name="吐鲁番市"/>
+                    <city id="031011" code="0996" name="库尔勒市"/>
+                    <city id="031012" code="0997" name="阿克苏市"/>
+                    <city id="031013" code="0998" name="喀什市"/>
+                    <city id="031014" code="0999" name="伊犁市"/>
+                    <city id="031015" code="0908" name="克州市"/>
+                </province>
+                <province id="0032" name="香港特别行政区">
+                </province>
+                <province id="0033" name="澳门特别行政区">
+                </province>
+                <province id="0034" name="台湾省">
+                </province>
+            </country>
+        </zone>
+    </zone-def>
+</xml-config>

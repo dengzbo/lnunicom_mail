@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<xml-config>
+    <config>
+        <property name="home" value="{naisa.journal.home}"/>
+    </config>
+    <journal>
+        <headers>
+            <header name="ap_assign_employee"
+                    fields="time|requestType|apid|entid|userlogin|password|userid"
+                    types="time|str|str|str|str|str"
+                    hash="apid|0" hashCount="1"/>
+            <header name="ap_create_company"
+                    fields="time|requestType|apid|entid|password|description|entlogin|domainname|mailboxsize|maxusernum|sizeoverrate|maxattachssize|maxattachsize|pop3|voicemail|securmail|htmlmail|timemail|videomail|maillist|mailscan|entaddrbook|popmail|calendar"
+                    types="time|str|str|str|str|str|str|str|str|str|str|str|
+                    str|str|str|str|str|str|str|str|str|str|str"
+                    hash="apid|0" hashCount="1"/>
+            <header name="ap_delete_company"
+                    fields="time|requestType|apid|entid"
+                    types="time|str|str"
+                    hash="apid|0" hashCount="1"/>
+            <header name="ap_modify_employee"
+                    fields="time|requestType|apid|entid|userid|password"
+                    types="time|str|str|str|str"
+                    hash="apid|0" hashCount="1"/>
+            <header name="ap_revoke_employee"
+                    fields="time|requestType|apid|entid|userlogin"
+                    types="time|str|str|str"
+                    hash="apid|0" hashCount="1"/>
+            <header name="ap_update_company_status"
+                    fields="time|requestType|apid|entid|operatecode"
+                    types="time|str|str|str"
+                    hash="apid|0" hashCount="1"/>
+            <header name="ap_update_employee_status"
+                    fields="time|requestType|apid|entid|userlogin|operatecode"
+                    types="time|str|str|str|str"
+                    hash="apid|0" hashCount="1"/>
+            <header name="ap_update_company_properties"
+                    fields="time|requestType|apid|entid|companyname|mailboxsize|maxusernum|sizeoverrate|maxattachsize|maxattachssize"
+                    types="time|str|str|str|str|str|str|str|str"
+                    hash="apid|0" hashCount="1"/>
+            <header name="ap_response"
+                    fields="time|responseType|apid|operator|status|message"
+                    types="time|str|str|str|str"
+                    hash="apid|0" hashCount="1"/>
+        </headers>
+        <init>
+            <formats>
+                <format name="normal_format" class="generic">
+                    <rule class="StringArray" format="array"
+                          arguments="$time|$each"/>
+                    <rule class="List" format="list"
+                          arguments="$time|$each"/>
+                </format>
+            </formats>
+            <appenders>
+                <appender name="ap_assign_employee" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+                <appender name="ap_create_company" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+                <appender name="ap_delete_company" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+                <appender name="ap_modify_employee" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+                <appender name="ap_revoke_employee" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+                <appender name="ap_update_company_status" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+                <appender name="ap_update_employee_status" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+                <appender name="ap_update_company_properties" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+                <appender name="ap_response" class="daily_hash"
+                          path="${home}" format="normal_format" rule="name"/>
+            </appenders>
+            <handlers>
+                <handler name="ap_assign_employee" class="wrapper">
+                    <appender instance="ap_assign_employee"/>
+                </handler>
+                <handler name="ap_create_company" class="wrapper">
+                    <appender instance="ap_create_company"/>
+                </handler>
+                <handler name="ap_delete_company" class="wrapper">
+                    <appender instance="ap_delete_company"/>
+                </handler>
+                <handler name="ap_modify_employee" class="wrapper">
+                    <appender instance="ap_modify_employee"/>
+                </handler>
+                <handler name="ap_revoke_employee" class="wrapper">
+                    <appender instance="ap_revoke_employee"/>
+                </handler>
+                <handler name="ap_update_company_status" class="wrapper">
+                    <appender instance="ap_update_company_status"/>
+                </handler>
+                <handler name="ap_update_employee_status" class="wrapper">
+                    <appender instance="ap_update_employee_status"/>
+                </handler>
+                <handler name="ap_update_company_properties" class="wrapper">
+                    <appender instance="ap_update_company_properties"/>
+                </handler>
+                <handler name="ap_response" class="wrapper">
+                    <appender instance="ap_response"/>
+                </handler>
+            </handlers>
+        </init>
+        <events>
+            <event name="ap_assign_employee" handler="ap_assign_employee"/>
+            <event name="ap_create_company" handler="ap_create_company"/>
+            <event name="ap_delete_company" handler="ap_delete_company"/>
+            <event name="ap_modify_employee" handler="ap_modify_employee"/>
+            <event name="ap_revoke_employee" handler="ap_revoke_employee"/>
+            <event name="ap_update_company_status"
+                   handler="ap_update_company_status"/>
+            <event name="ap_update_employee_status"
+                   handler="ap_update_employee_status"/>
+            <event name="ap_update_company_properties"
+                   handler="ap_update_company_properties"/>
+            <event name="ap_response" handler="ap_response"/>
+        </events>
+    </journal>
+</xml-config>

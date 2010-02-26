@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+  <nas>
+    <services>
+      <service name="webmail" create="false">
+        <filters>
+          <mapping pattern="server" filter="addrbook_user_filter"/>
+        </filters>
+        <models>
+          <model name="addrbook_ent_user" class="com.ceno.sandbox.email.addrbook.ent.UserCommand"/>
+          <model name="addrbook_user_filter" class="com.ceno.sandbox.email.addrbook.ent.lsn.UpdateUserFilter"/>
+        </models>
+      </service>
+    </services>
+  </nas>
+</xml-config>

@@ -1,0 +1,5 @@
+Sender£º$sender
+Subject£º$subject
+#if ( $attachment )
+Attachment is contained
+#end 

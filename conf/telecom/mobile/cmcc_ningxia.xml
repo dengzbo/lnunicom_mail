@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<Structure type="geographic_areas">
+  <CountryRegion code="86" id="CHN">
+    <Range prefix="*" provinceId="0019">
+      <Range prefix="136">
+        <Range cityId="019001" prefix="1953,1955,2953,2955,3953,3955"></Range>
+        <Range cityId="019002" prefix="1952,1956,2952,2956,3952,3956"></Range>
+        <Range cityId="019003" prefix="1950-1951,1957-1959,4950-4951,4957-4959,2950-2951,2957-2959,3950-3951,3957-3959"></Range>
+        <Range cityId="019004" prefix="1954,4952-4956,2954,3954"></Range>
+      </Range>
+      <Range prefix="138">
+        <Range cityId="019001" prefix="9503,9505,9513,9515,9520-9529,9533,9535,9543,9545,9550-9559"></Range>
+        <Range cityId="019002" prefix="9502,9506,9512,9516,9532,9536,9542,9546"></Range>
+        <Range cityId="019003" prefix="9500-9501,9507-9511,9517-9519,9530-9531,9537-9541,9547-9549,9560-9569"></Range>
+        <Range cityId="019004" prefix="9504,9514,9534,9544"></Range>
+      </Range>
+      <Range prefix="139">
+        <Range cityId="019001" prefix="0953,0955,9503,9505,9513,9515,9523,9525,9533,9535,9543,9545"></Range>
+        <Range cityId="019002" prefix="0952,0956,9502,9506,9512,9516,9522,9526,9532,9536,9542,9546"></Range>
+        <Range cityId="019003" prefix="0950-0951,0957-0959,9500-9501,9507-9511,9517-9521,9527-9531,9537-9541,9547-9549"></Range>
+        <Range cityId="019004" prefix="0954,9504,9514,9524,9534,9544"></Range>
+      </Range>
+      <Range prefix="135">
+        <Range cityId="019001" prefix="1923,1925,1953,1955"></Range>
+        <Range cityId="019002" prefix="1922,1926,1952,1956"></Range>
+        <Range cityId="019003" prefix="1920-1921,1927-1929,1950-1951,1957-1959"></Range>
+        <Range cityId="019004" prefix="1924,1954"></Range>
+      </Range>
+      <Range prefix="137">
+        <Range cityId="019001" prefix="0953,0955"></Range>
+        <Range cityId="019002" prefix="0952,0956"></Range>
+        <Range cityId="019003" prefix="0950-0951,0957-0959"></Range>
+        <Range cityId="019004" prefix="0954"></Range>
+      </Range>
+    </Range>
+  </CountryRegion>
+</Structure>

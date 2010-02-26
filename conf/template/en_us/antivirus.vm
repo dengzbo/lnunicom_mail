@@ -1,0 +1,41 @@
+Dear user:
+
+#if ( $action == "1" )
+    Your mail from $from has virus,we have cleaned it.
+#else
+    Your mail from $from has virus,the source mail is in the attachment.Please be carefull.
+#end
+
+
+-----------------------------------------------------------------------
+Below is the source mail information
+-----------------------------------------------------------------------
+Subject:$subject
+Sender:$from
+Recevier:$to
+
+
+-----------------------------------------------------------------------
+Below is the virus information
+-----------------------------------------------------------------------
+#if ( $action == "1" )
+#set ( $result1 = "Cleaned" )
+#set ( $result2 = "Deleted")
+#set ( $result3 = "Kill failed" )
+#else
+#set ( $result1 = "Can be cleaned" )
+#set ( $result2 = "Can't be cleaned" )
+#set ( $result3 = "Can be deleted only" )
+#end
+#foreach ( $info in $infos )
+Attachment:$info.getFileName()
+Virus name:$info.getVirusName()
+Result:#if ( $info.getResult() == 1 )
+$result1
+#elseif ( $info.getResult() == 2 )
+$result2
+#else
+$result3
+#end
+#end
+-----------------------------------------------------------------------

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-config>
+    <nas>
+        <services>
+            <service name="wfsHelper">
+                <modules>
+                    <module name="wfsCommand"
+                            class="com.ceno.mail.customize.lncnc.vdisk.cmd.WfsCommand"/>
+                </modules>
+            </service>
+        </services>
+    </nas>
+</xml-config>

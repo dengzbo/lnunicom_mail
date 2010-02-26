@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-config>
+    <jade-conf>
+        <node base="naisa.payment.bill">
+            <!-- 支付类型 -->
+            <property name="payment_type" value="mobile_bind"/>
+            <!-- 帐单日 -->
+            <property name="excursion" value="0"/>
+        </node>
+    </jade-conf>
+    <bill>
+        <datasources>
+            <datasource name="bill_out" type="billout_ds">
+		<!--选取voucher_status为1的帐单-->
+                <params name="status" value="1"/>
+            </datasource>
+            <datasource name="re_bill_out" type="billout_ds">
+                <!--选取voucher_status为4的帐单-->
+                <params name="status" value="4"/>
+            </datasource>
+            <datasource name="bill_make" type="billmake_ds"/>
+            <datasource name="pay_success" type="bill_pay_status_ds">
+                <!--选取voucher_status为3的帐单-->
+                <params name="status" value="3"/>
+            </datasource>
+            <datasource name="pay_fail" type="bill_pay_status_ds">
+                <!--选取voucher_status为4的帐单-->
+                <params name="status" value="4"/>
+            </datasource>
+            <datasource name="pay_sent" type="bill_pay_status_ds">
+                <!--选取voucher_status为5的帐单-->
+                <params name="status" value="5"/>
+            </datasource>
+            <datasource name="success_message" type="success_message_ds"/>
+            <datasource name="sms_message_sync" type="sms_message_sync_ds">
+            </datasource>
+            <datasource name="sms_message_timeout" type="sms_message_timeout_ds">
+                <!--超时3天后需要重置的记录-->
+                <params name="timeout_day" value="3"/>
+            </datasource>
+        </datasources>
+
+        <names>
+            <generator name="file_name_gen" type="file_name_generator">
+                <!-- 文件存放位置 -->
+                <params name="path" value="/ceno/product/umail/bill"/>
+                <!-- 文件备份位置 -->
+                <params name="bak_path" value="/ceno/product/umail/billbak"/>
+                <!-- 文件序列号位数 -->
+                <params name="index_num" value="4"/>
+                <!-- 文件名前缀 -->
+                <params name="prefix" value="umail-bill"/>
+                <!-- 文件名后缀 -->
+                <params name="suffix" value=".data"/>
+            </generator>
+            <generator name="oracle_table_name" type="table_name_generator">
+                <!--表名序列号位数-->
+                <params name="number" value="2"/>
+            </generator>
+        </names>
+
+        <handlers>
+            <handler name="file" type="file">
+                <!-- 文件生成器 -->
+                <params name="generator" value="file_name_gen"/>
+                <!-- 是否限制文件最大长度 -->
+                <params name="limit_file_size" value="true"/>
+                <!-- 文件最大长度 -->
+                <params name="file_size" value="1024"/>
+                <!-- 是否限制文件能包含帐单数量 -->
+                <params name="limit_record_size" value="false"/>
+                <!-- 文件能包含帐单数量 -->
+                <params name="record_max_size" value="30000"/>
+                <!-- 文件出帐扩展格式器 -->
+                <params name="append_rule" value="file_out"/>
+            </handler>
+            <handler name="sms" type="sms"/>
+            <handler name="bill_make" type="bill_make_handler">
+                <!-- 是否支持首帐单 -->
+                <params name="enable_first_bill" value="true"/>
+                <!-- 是否支持半月帐单 -->
+                <params name="enable_half_bill" value="true"/>
+                <!--截止到月底某个时间点停止出帐，直接把满足出帐条件记录直接不扣费置为成功-->
+                <parameter name="time_valve" value="12"></parameter>
+            </handler>
+            <handler name="pay_success" type="pay_handler">
+                <!-- 更新的购买状态置 -->
+                <params name="purchase_status" value="0"/>
+                <!-- 更新的帐单状态置 -->
+                <params name="voucher_status" value="6"/>
+            </handler>
+            <handler name="pay_fail" type="pay_handler">
+                <!-- 更新的购买状态置 -->
+                <params name="purchase_status" value="10"/>
+                <!-- 更新的帐单状态置 -->
+                <params name="voucher_status" value="7"/>
+            </handler>
+            <handler name="reset_sent" type="reset_sent_handler">
+                <!-- 是否为短信扣费方式 -->
+                <params name="sms_pay" value="true"/>
+            </handler>
+            <handler name="success_repay" type="success_repay_handler"/>
+            <handler name="sms_payment_sync_handler" type="sms_payment_sync_handler"/>
+            <handler name="sms_message_timeout_handler" type="sms_message_timeout_handler">
+                <!-- 发送成功，但没有结果返回超时，4视为失败，3视为成功 -->
+                <params name="send_success_ret" value="4"/>
+                <!-- 一直发送失败超时，4视为失败，3视为成功 -->
+                <params name="send_fail_ret" value="4"/>
+            </handler>
+        </handlers>
+
+        <backups>
+            <backup name="total_bill" type="simple_backup">
+                <!-- 备份源表 -->
+                <params name="source" value="business_total_bill"/>
+                <!-- 备份目的表 -->
+                <params name="destation" value="business_total_bill_history"/>
+                <!-- 时间字段域 -->
+                <params name="date_field" value="voucher_create_date"/>
+                <!-- 月份数 -->
+                <params name="months" value="3"/>
+                <!-- 是否使用建表 -->
+                <params name="new_table" value="false"/>
+                <!-- 表名生成器 -->
+                <params name="generator" value="oracle_table_name"/>
+            </backup>
+        </backups>
+
+        <pipes>
+            <pipe name="bill_make" type="simple_pipe">
+                <filter class="naisa.mail.business.bill.filters.SinglenessPayBillFilter"/>
+                <handler name="bill_make"/>
+            </pipe>
+            <pipe name="sms" type="simple_pipe">
+                <filter class="naisa.mail.business.bill.filters.HalfMonthBillFilter"/>
+                <handler name="sms"/>
+            </pipe>
+            <pipe name="file" type="simple_pipe">
+                <filter class="naisa.mail.business.bill.filters.HalfMonthBillFilter"/>
+                <handler name="file"/>
+            </pipe>
+            <pipe name="pay_success" type="simple_pipe">
+                <handler name="pay_success"/>
+            </pipe>
+            <pipe name="pay_fail" type="simple_pipe">
+                <handler name="pay_fail"/>
+            </pipe>
+            <pipe name="pay_sent_reset" type="simple_pipe">
+                <handler name="reset_sent"/>
+            </pipe>
+            <pipe name="sms_payment_sync" type="simple_pipe">
+                <handler name="sms_payment_sync_handler"/>
+            </pipe>
+            <pipe name="sms_message_timeout" type="simple_pipe">
+                <handler name="sms_message_timeout_handler"/>
+            </pipe>
+        </pipes>
+    </bill>
+
+    <crontab reload="true">
+            <cron name="purchase_expire_policy_handler" second="*" minute="*" hour="1" day-of-month="*"     month-of-year="*" day-of-week="*">
+                <task name="purchase_expire_policy_handler">
+                    <parameters>
+                        <parameter name="time_valve" value="12"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+        <!-- 定期执行出帐单-->
+            <cron name="business_bill_make" second="10" minute="10" hour="*" day-of-month="*" month-of-year="*" day-of-week="*">
+                <task name="business_bill_make">
+                    <parameters>
+                        <!-- 每批处理多少帐单-->
+                        <parameter name="batch_size" value="200"></parameter>
+                        <!-- 每次任务处理次数-->
+                        <parameter name="batch_count" value="50"></parameter>
+                        <!-- 每批间隔时间单位为毫秒-->
+                        <parameter name="batch_interval" value="1000"></parameter>
+                        <!-- 数据源-->
+                        <parameter name="datasource" value="bill_make"></parameter>
+                        <!-- 数据处理管道，可配置多个数据道，用分号隔开 -->
+                        <parameter name="pipes" value="bill_make"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+        <!--定期执行将帐单到支付服务中心付费-->
+            <cron name="business_bill_output" second="1" minute="30" hour="*" day-of-month="*" month-of-year="*" day-of-week="*">
+                <task name="business_bill_output">
+                    <parameters>
+                        <!-- 每次任务处理次数-->
+                        <parameter name="batch_count" value="50"></parameter>
+                        <!-- 每批处理多少帐单-->
+                        <parameter name="batch_size" value="200"></parameter>
+                        <!-- 每批间隔时间单位为毫秒-->
+                        <parameter name="batch_interval" value="1000"></parameter>
+                        <!-- 数据源-->
+                        <parameter name="datasource" value="bill_out"></parameter>
+                        <!-- 数据处理管道，可配置多个数据管道，用分号隔开 -->
+                        <parameter name="pipes" value="sms"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+            <!--定期执行失败帐单重新支付任务-->
+            <cron name="business_bill_reoutput" second="*" minute="30" hour="4" day-of-month="*" month-of-year="*" day-of-week="*">
+                <task name="business_bill_reoutput">
+                    <parameters>
+                        <!-- 每次任务处理次数-->
+                        <parameter name="batch_count" value="500"></parameter>
+                        <!-- 每批处理多少帐单-->
+                        <parameter name="batch_size" value="200"></parameter>
+                        <!-- 每批间隔时间单位为毫秒-->
+                        <parameter name="batch_interval" value="1000"></parameter>
+    	 		        <!-- 数据源-->
+                        <parameter name="datasource" value="re_bill_out"></parameter>
+    			        <!-- 数据处理管道，可配置多个数据管道，用分号隔开 -->
+    			        <!-- sms管道为手机扣费方式，file为文件出帐方式 -->
+                        <parameter name="pipes" value="sms"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+            <!-- 对滤重帐单的处理任务，voucher_status=5-->
+            <cron name="business_bill_sent" second="10" minute="5" hour="*" day-of-month="*" month-of-year="*" day-of-week="*">
+                <task name="business_bill_sent">
+                    <parameters>
+                        <!-- 每次任务处理次数-->
+                        <parameter name="batch_count" value="50"></parameter>
+                        <!-- 每批处理多少帐单-->
+                        <parameter name="batch_size" value="200"></parameter>>
+                        <!-- 每批间隔时间单位为毫秒-->
+                        <parameter name="batch_interval" value="1000"></parameter>
+                        <!-- 数据源-->
+                        <parameter name="datasource" value="pay_sent"></parameter>
+                        <!-- 数据处理管道，可配置多个数据管道，用分号隔开 -->
+                        <!-- 如果滤重数据需要重发，可以配置pipes为pay_sent_reset -->
+                        <parameter name="pipes" value="pay_success"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+            <!-- 对成功帐单进行状态迁移处理，voucher_status=3-->
+            <cron name="business_bill_success" second="1" minute="20,50" hour="*" day-of-month="*" month-of-year="*" day-of-week="*">
+                <task name="business_bill_success">
+                    <parameters>
+                        <!-- 每次任务处理次数-->
+                        <parameter name="batch_count" value="50"></parameter>
+                        <!-- 每批处理多少帐单-->
+                        <parameter name="batch_size" value="200"></parameter>
+                        <!-- 每批间隔时间单位为毫秒-->
+                        <parameter name="batch_interval" value="1000"></parameter>
+                        <!-- 数据源-->
+                        <parameter name="datasource" value="pay_success"></parameter>
+                        <!-- 数据处理管道，可配置多个数据管道，用分号隔开 -->
+                        <parameter name="pipes" value="pay_success"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+            <!-- 对失败帐单进行状态迁移处理，voucher_status=3-->
+            <cron name="business_bill_fault" second="*" minute="*" hour="1" day-of-month="1" month-of-year="*" day-of-week="*">
+                <task name="business_bill_fault">
+                    <parameters>
+                        <parameter name="batch_count" value="10000"></parameter>
+                        <!-- 每批处理多少帐单-->
+                        <parameter name="batch_size" value="200"></parameter>
+                        <!-- 每批间隔时间单位为毫秒-->
+                        <parameter name="batch_interval" value="1000"></parameter>
+                        <!-- 数据源-->
+                        <parameter name="datasource" value="pay_fail"></parameter>
+                        <!-- 数据处理管道，可配置多个数据管道，用分号隔开 -->
+                        <parameter name="pipes" value="pay_fail"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+            <!-- 对短信发送后未收到状态报告的扣费处理，voucher_status=3-->
+            <cron name="business_bill_sms_timeout" second="1" minute="1" hour="*" day-of-month="1" month-of-year="*" day-of-week="*">
+                <task name="business_bill_sms_timeout">
+                    <parameters>
+                        <parameter name="batch_count" value="50"></parameter>
+                        <!-- 每批处理多少帐单-->
+                        <parameter name="batch_size" value="200"></parameter>
+                        <!-- 每批间隔时间单位为毫秒-->
+                        <parameter name="batch_interval" value="1000"></parameter>
+                        <!-- 数据源-->
+                        <parameter name="datasource" value="sms_message_timeout"></parameter>
+                        <!-- 数据处理管道，可配置多个数据管道，用分号隔开 -->
+                        <parameter name="pipes" value="sms_message_timeout"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+            <!--定期执行付费消息和帐单状态的同步-->
+            <cron name="business_bill_sync" second="50" minute="0,20,40" hour="*" day-of-month="*" month-of-year="*" day-of-week="*">
+                <task name="business_bill_sync">
+                    <parameters>
+                            <parameter name="batch_count" value="500"></parameter>
+                            <!-- 每批处理多少帐单-->
+                            <parameter name="batch_size" value="200"></parameter>
+                            <!-- 每批间隔时间单位为毫秒-->
+                            <parameter name="batch_interval" value="100"></parameter>
+                            <!-- 数据源-->
+                            <parameter name="datasource" value="sms_message_sync"></parameter>
+                            <!-- 数据处理管道，可配置多个数据管道，用分号隔开 -->
+                            <parameter name="pipes" value="sms_payment_sync"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+            <!-- total_bill表数据表备份迁移crontab-->
+            <cron name="business_table_backup" second="10" minute="1" hour="0" day-of-month="15" month-of-year="*" day-of-week="*">
+                <task name="business_table_backup">
+                    <parameters>
+                            <!-- 每批间隔时间单位为毫秒-->
+                            <parameter name="batch_interval" value="100"></parameter>
+                            <!-- 备份器 -->
+                            <parameter name="backup" value="total_bill"></parameter>
+                    </parameters>
+                </task>
+            </cron>
+      </crontab>
+</xml-config>

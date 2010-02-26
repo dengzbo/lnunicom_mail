@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coin xmlns="http://www.ceno.cn/coin"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ceno.cn/coin http://www.ceno.cn/coin.xsd">
+  <classes namespace="naisa.mail.rule">
+    <class name="rule_driver" class="naisa.mail.rule.ext.RuleDBDriver" />
+    <class name="rule_manager" class="naisa.mail.rule.ext.SimpleRuleManager" />
+  </classes>
+  <objects namespace="naisa.mail.rule">
+    <object name="rule_driver" class="rule_driver" />
+    <object name="rule_manager" class="rule_manager">
+      <property name="rule_driver">
+        <object ref="rule_driver" />
+      </property>
+      <property name="arrival_notify_rule_action">
+      <!--  9-sms notify; 27-wap push; 28 client push; 29 mms push -->
+        <value>9,27,28,29</value>
+      </property>
+      <property name="auto_forwarded_rule_action">
+       <!--  4-auto forwarded,  5- auto forwarded and save email to inbox -->
+        <value>4,5</value>
+      </property>
+    </object>
+  </objects>
+</coin>

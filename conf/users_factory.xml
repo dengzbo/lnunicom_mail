@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-config>
+
+  <factories>
+
+    <factory name="users">
+      <product name="user">
+        <part name="username" type="string" title="用户名"></part>
+        <part name="password" type="string" title="密码"></part>
+        <part name="truename" type="string" title="用户描述"></part>
+        <part name="comment" type="string" title="备注"></part>
+      </product>
+      <workshop name="users_add" type="source">
+        <listener class="naisa.factory.listeners.ProductHistoryListener"></listener>
+        <line type="sequence">  
+          <device name="excel_source">
+            <param name="head_type" value="title"></param>
+            <param name="file_name_encode" value="GBK"></param>
+          </device>
+          <device name="filter">
+            <param name="check_point" value="username"></param>
+          </device>
+        </line>
+        <line type="sequence">
+          <device name="attr_value" part="gender">
+            <param name="key" value="title"></param>
+            <param name="default" value="2"></param>
+          </device>
+          <device name="request">
+            <param name="keys" value="creator;domainid;groupid"></param>
+          </device>
+        </line>
+        <line type="sequence">
+          <device name="user_action">
+          </device>
+        </line>
+        <line type="sequence">
+          <device name="attach" part="comment">
+            <param name="value" value="开户成功"></param>
+            <param name="cover" value="false"></param>
+          </device>
+          <device name="excel_sink">
+            <param name="head_type" value="title"></param>
+            <param name="filename" value="${TIME_STAMP}.xls"/>
+            <param name="dir" value="${ARES_HOME}/var/store/users/${DATE}/"></param>
+          </device>
+        </line>
+      </workshop>
+    </factory>
+    
+    <factory name="business_create_users">
+      <product name="user">
+        <part name="username" type="string" title="用户名"></part>
+        <part name="truename" type="string" title="真实姓名"></part>
+        <part name="password" type="string" title="密码"></part>
+        <part name="template" type="string" title="服务模板"/>
+        <part name="zone_title" type="string" title="地区"/>
+        <part name="gender" type="string" title="性别"></part>
+        <part name="comment" type="string" title="备注"></part>
+      </product>
+      <workshop name="create_users" type="source">
+        <param name="batch_size" value="100"/>
+        <param name="batch_interval" value="1000"/>
+
+        <listener class="naisa.factory.listeners.ProductHistoryListener"></listener>
+        <listener class="naisa.email.util.ManagerContextListener"></listener>
+        <line type="sequence">
+          <device name="excel_source">
+            <param name="head_type" value="title"></param>
+          </device>
+          <device name="filter">
+            <param name="check_point" value="username"></param>
+          </device>
+        </line>
+        <line type="sequence">
+          <device name="request">
+            <param name="keys" value="zone;creator;domainid;groupid;template_id;price_id"></param>
+          </device>
+          <device name="attach" part="billing_type">
+            <param name="value" value="8"></param>
+          </device>
+	      <device name="attach_zone" part="zone_title"></device>
+          <device name="attach_template" part="template"></device>
+          <device name="attr_value" part="gender">
+            <param name="key" value="title"></param>
+          </device>
+          <device name="attr_value" part="zone">
+            <param name="key" value="title"></param>
+          </device>
+          <device name="attr_check">
+            <param name="attr" value="username"></param>
+          </device>
+        </line>
+        <line type="sequence">
+          <device name="business_user_register"/>
+        </line>
+        <line type="sequence">
+          <device name="attach" part="comment">
+            <param name="value" value="开户成功"></param>
+            <param name="cover" value="false"></param>
+          </device>
+          <device name="attr_value" part="gender">
+            <param name="key" value="value"></param>
+          </device>
+          <device name="excel_sink">
+            <param name="head_type" value="title"></param>
+            <param name="filename" value="${TIME_STAMP}.xls"/>
+            <param name="dir" value="${ARES_HOME}/var/store/users/${DATE}/"></param>
+          </device>
+        </line>
+      </workshop>
+    </factory>
+    <factory name="business_delete_users">
+      <product name="user">
+        <part name="username" type="string" title="用户名"></part>
+        <part name="comment" type="string" title="备注"></part>
+      </product>  
+      <workshop name="delete_users" type="source">
+	    <param name="batch_size" value="100"/>
+	    <param name="batch_interval" value="1000"/>
+        <listener class="naisa.factory.listeners.ProductHistoryListener"></listener>
+        <listener class="naisa.email.util.ManagerContextListener"></listener>
+        <line type="sequence">
+          <device name="excel_source">
+            <param name="head_type" value="title"></param>
+          </device>
+          <device name="filter">
+            <param name="check_point"  value="username"></param>
+          </device>
+	  <!--
+          <device name="zone_filter">
+            <param name="phone"  value="username"></param>                        
+    	  </device>
+    	-->
+        </line>
+        <line type="sequence">
+          <device name="request">
+            <param name="keys" value="creator;domainid"></param>
+          </device>
+        </line>
+        <line type="sequence">
+          <device name="fetch_user_info"></device>
+          <device name="delete_user"></device>
+        </line>
+        <line type="sequence">
+          <device name="attach" part="comment">
+            <param name="value" value="销户成功"></param>
+            <param name="cover" value="false"></param>
+          </device>
+          <device name="excel_sink">
+            <param name="head_type" value="title"></param>
+            <param name="filename" value="${TIME_STAMP}.xls"/>
+            <param name="dir" value="${ARES_HOME}/var/store/users/${DATE}/"></param>
+          </device>
+        </line>
+      </workshop>
+   </factory>
+   <factory name="business_export_users">
+      <product name="user">
+	<part name="username" type="string" title="用户名"/>
+	<part name="domain_name" type="string" title="域名"/>
+        <part name="template" type="string" title="服务模板"/>
+        <part name="zone_title" type="string" title="用户所在地区"/>
+        <part name="createtime" type="string" title="用户创建时间" />
+        <part name="create_type" type="int" title="开通方式"/>        
+        <part name="creator" type="string" title="开通人员"/>
+      </product>
+      <workshop name="export_users" type="source">
+        <listener class="naisa.factory.listeners.ProductHistoryListener"/> 
+        <line type="sequence">
+          <device name="export_db_source">
+            <param name="keys" value="createdate_from;createdate_to;zone_title;template;domain_id;create_type;status;rownum;next_rownum"/>
+          </device>
+          <device name="filter">
+             <param name="check_point" value="username"></param>
+          </device>
+        </line>
+        <line type="sequence">
+          <device name="zone_assembly"/>
+          <device name="create_type_assembly"/>
+          <device name="excel_sink">
+		    <param name="head_type" value="title"/>
+		    <param name="filename" value="${TIME_STAMP}.xls"/>
+		    <param name="dir" value="${ARES_HOME}/var/store/users/${DATE}/"/>
+          </device>
+        </line>
+      </workshop>
+   </factory>
+   <!-- 个人用户激活率查询 -->
+   <factory name="business_export_active_users">
+      <product name="user">
+        <part name="username" type="string" title="用户名"/>
+	<part name="domain_name" type="string" title="域名"/>	
+        <part name="create_type" type="int" title="开通方式"/>
+        <part name="creator" type="string" title="开通人员间"/>
+        <part name="createtime" type="string" title="开通时间"/>
+        <part name="purchase_expire_date" type="string" title="截止日期"/>
+        <part name="purchase_name" type="string" title="服务模板"/>
+      </product>
+      <workshop name="export_users" type="source">
+        <listener class="naisa.factory.listeners.ProductHistoryListener"/>
+        <line type="sequence">
+          <device name="export_db_source">
+            <param name="keys" value="zone;zone_title;status;template;days;createdate_from;createdate_to;create_type;rownum;next_rownum"/>
+          </device>
+          <device name="filter">
+             <param name="check_point" value="username"></param>
+          </device>
+        </line>
+        <line type="sequence">
+          <device name="zone_assembly"/>
+          <device name="create_type_assembly"/>
+          <device name="excel_sink">
+          <param name="head_type" value="title"/>
+          <param name="filename" value="${TIME_STAMP}.xls"/>
+          <param name="dir" value="${ARES_HOME}/var/store/users/${DATE}/"/>
+          </device>
+        </line>
+      </workshop>
+   </factory>
+   
+  </factories>
+</xml-config>

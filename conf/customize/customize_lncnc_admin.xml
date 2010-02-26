@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-config>
+  <nas>
+    <services>
+      <service name="lncnc2">
+        <models>
+          <model name="ap_ent" class="com.ceno.mail.customize.lncnc.cmd.ApEntCommand"/>
+          <model name="ap_user" class="com.ceno.mail.customize.lncnc.cmd.ApUserCommand"/>
+          <model name="ap_pushmail_ent" class="com.ceno.mail.customize.lncnc.cmd.ApPushmailEntCommand"/>
+          <model name="ap_pushmail_user" class="com.ceno.mail.customize.lncnc.cmd.ApPushmailUserCommand"/>
+        </models>
+      </service>
+    </services>
+  </nas>
+</xml-config>

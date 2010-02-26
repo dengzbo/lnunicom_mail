@@ -1,0 +1,11 @@
+#foreach($wfs_attach_file in $wfs_attach_files)
+Please download maxattachment:<a href="http://$host_url/$context_path/checkfileexist.xal?uid=$wfs_attach_file.getFileId()" target="_blank">$wfs_attach_file.getFileName()</a>
+<br>
+#end
+<br>
+#if($wfs_attach_files.size()>0)
+    #if($sharing_password!="")
+      Password:$sharing_password
+    #end
+#end
+<br>

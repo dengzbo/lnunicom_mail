@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+    <sync>
+        <clients>
+            <client group="admin" name="app" url="nns://127.0.0.1:9188/sync_server" send="business_account" run="server">
+              <listener messageType="mobile_status" class="com.ceno.admin.sync.listener.mobile.UnpayStopListener"></listener>
+              <listener messageType="mobile_status" class="com.ceno.admin.sync.listener.mobile.BusinessStopListener"></listener>
+              <listener messageType="mobile_status" class="com.ceno.admin.sync.listener.mobile.ActiveListener"></listener>
+              <listener messageType="mobile_status" class="com.ceno.admin.sync.listener.mobile.DestoryListener"></listener>
+              <listener messageType="mobile_status" class="com.ceno.admin.sync.listener.mobile.ChangeListener"></listener>
+              <listener messageType="mobile_status" class="com.ceno.admin.sync.listener.mobile.PreparedDestroyListener"></listener>
+              <listener messageType="mobile_status" class="com.ceno.admin.sync.listener.mobile.PreparedDestoryCancelListener"></listener>
+
+              <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.CreateListener"></listener>
+              <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.ActiveListener"></listener>
+              <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.ArrearListener"></listener>
+              <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.PauseListener"></listener>
+              <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.DeleteListener"></listener>
+              <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.TemplateChangeListener"></listener>
+              <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.PriceChangeListener"></listener>
+              <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.FreeUpgradeListener"></listener>
+	      <listener messageType="business_account" class="com.ceno.admin.sync.listener.account.PriceChangeListener"></listener>
+              <listener class="com.ceno.commons.frame.sync.listener.SyncProtocolListener"></listener>
+            </client>
+        </clients>
+    </sync>
+</xml-config>

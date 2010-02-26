@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="GBK"?>
+<Structure type="geographic_areas">
+    <CountryRegion code="86" id="CHN">
+        <Range prefix="130-133" numberType="mobile" operator="unicom" minLen="11" maxLen="11" regexp="([0-9])*"/>
+        <Range prefix="1010" numberType="mobile" operator="unicom" minLen="8" maxLen="8" regexp="([0-9])*"/>
+    </CountryRegion>
+</Structure>

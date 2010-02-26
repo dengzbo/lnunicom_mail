@@ -1,0 +1,17 @@
+From:$from
+To:$to
+Subject:=?GBK?B?08q8/s+1zbPI1bPMudzA7czh0NE=?=
+Content-Type:text/html;charset=GBK
+
+您好！<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;$notify_content<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;您在日程管理系统中定制的活动 <font color="#FF6600"><strong>$title</strong></font> 已到预约时间。<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;活动时间为：$time<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;活动内容为：$yourcontent<br/>
+<br/>
+<div align="right">日程管理系统</div>
+

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<Structure type="geographic_areas">
+  <CountryRegion code="86" id="CHN">
+    <Range prefix="*" provinceId="0012">
+      <Range prefix="136">
+        <Range cityId="012001" prefix="1714,1721,4714,5714,6904,7714,8718"></Range>
+        <Range cityId="012002" prefix="1715,4715,4725,6908,7715,8714"></Range>
+        <Range cityId="012003" prefix="0728,1722,4729,7720-7722,3573"></Range>
+        <Range cityId="012004" prefix="0725,1713,1867,2718,4713,5713,6903,7713,9715-9717,8713,9714,3609-3613,3583-3589,3600-3608"></Range>
+        <Range cityId="012005" prefix="0710-0719,1860-1866,2710-2714,2720-2729,2860-2869,4720-4723,5720-5729,6710-6729,9732-9735,3860-3869"></Range>
+        <Range cityId="012006" prefix="0729,1712,1723,4712,5712,6902,7712,8712,9712-9713,3581-3582"></Range>
+        <Range cityId="012007" prefix="0720,1717,1727,1868-1869,4717,4727,5717,6907,7717,8717,8722,8727,9727-9729"></Range>
+        <Range cityId="012008" prefix="0727,1710,1720,2719,4710,5710,6900,7710,8710,8728-8729,9710-9711,9720-9722"></Range>
+        <Range cityId="012009" prefix="0721,1716,1725-1726,2716-2717,4716,4719,5716,6906,7716,8715-8716,9719,9723-9726,9730-9731"></Range>
+        <Range cityId="012010" prefix="0724,8719,9718,1718,4718,6905,7718,3574-3577,3627-3629"></Range>
+        <Range cityId="012011" prefix="0722,1728-1729,4728,5718,7728-7729,8723-8726"></Range>
+        <Range cityId="012012" prefix="0726,1724,2715,4724,5715,7723-7727"></Range>
+        <Range cityId="012013" prefix="0723,1711,4711,5711,6901,8711,7711"></Range>
+        <Range cityId="012014" prefix="1719,4726,5719,6909,7719,8720-8721,3618-3622,3570-3572,3614-3617"></Range>
+      </Range>
+      <Range prefix="138">
+        <Range cityId="012001" prefix="0723,7205-7214,8645-8649"></Range>
+        <Range cityId="012002" prefix="0724,7215-7219,8650-8654"></Range>
+        <Range cityId="012003" prefix="7285-7289,8685-8689"></Range>
+        <Range cityId="012004" prefix="0725,7195-7204,8640-8644"></Range>
+        <Range cityId="012005" prefix="0710-0719,0860,0864-0869,7100-7159,8600-8619"></Range>
+        <Range cityId="012006" prefix="0729,7185-7194,8635-8639"></Range>
+        <Range cityId="012007" prefix="0720,7245-7269,8665-8674"></Range>
+        <Range cityId="012008" prefix="0727,7160-7179,8620-8629"></Range>
+        <Range cityId="012009" prefix="0721,7220-7244,8655-8664"></Range>
+        <Range cityId="012010" prefix="7270-7274,8675-8679"></Range>
+        <Range cityId="012011" prefix="0722,7295-7299,8695-8699"></Range>
+        <Range cityId="012012" prefix="0726,7290-7294,8690-8694"></Range>
+        <Range cityId="012013" prefix="7180-7184,8630-8634"></Range>
+        <Range cityId="012014" prefix="0728,7275-7284,8680-8684"></Range>
+      </Range>
+      <Range prefix="139">
+        <Range cityId="012001" prefix="0723,7175-7178,7276-7280,8657-8660,9595-9599"></Range>
+        <Range cityId="012002" prefix="0724,7180-7182,7281-7285,8661-8663,9750-9754"></Range>
+        <Range cityId="012003" prefix="0866,7179,7298-7299,8643-8644,9785-9789"></Range>
+        <Range cityId="012004" prefix="0725,7170-7174,7270-7275,8651-8656,9590-9594"></Range>
+        <Range cityId="012005" prefix="0710-0719,0862-0865,7100-7169,8600-8629,9550-9569"></Range>
+        <Range cityId="012006" prefix="0729,7194-7197,7264-7269,8645-8650,9585-9589"></Range>
+        <Range cityId="012007" prefix="0720,0860,7200-7204,7251-7260,8674-8683,9765-9774"></Range>
+        <Range cityId="012008" prefix="0727,0867,7205-7209,7220-7229,8630-8639,9570-9579"></Range>
+        <Range cityId="012009" prefix="0721,0861,7210-7216,7230-7239,8664-8673,9755-9764"></Range>
+        <Range cityId="012010" prefix="0726,7187-7189,7240-7244,8684-8686,9775-9779"></Range>
+        <Range cityId="012011" prefix="0722,7217-7219,7261-7263,7292-7294,8692-8695,9795-9799"></Range>
+        <Range cityId="012012" prefix="0869,7183-7186,7286-7291,8696-8699,9790-9794"></Range>
+        <Range cityId="012013" prefix="0868,7198-7199,7295-7297,8640-8642,9580-9584"></Range>
+        <Range cityId="012014" prefix="0728,7190-7193,7245-7250,8687-8691,9780-9784"></Range>
+      </Range>
+      <Range prefix="135">
+        <Range cityId="012001" prefix="0723,8128-8129,9761-9774,4549-4554,4555-4556"></Range>
+        <Range cityId="012002" prefix="0864,4557"></Range>
+        <Range cityId="012003" prefix="9782-9784"></Range>
+        <Range cityId="012004" prefix="0865,8123-8124,9365-9369,9754-9760"></Range>
+        <Range cityId="012005" prefix="0710-0719,1710-1729,4534-4539,5425-5454,5462-5469,4500-4529,5400-5424"></Range>
+        <Range cityId="012006" prefix="0729,0863,0869"></Range>
+        <Range cityId="012007" prefix="0720,0724,0860,8148-8149,4570-4577,4580-4582"></Range>
+        <Range cityId="012008" prefix="0727-0728,0866,9746-9753"></Range>
+        <Range cityId="012009" prefix="0721,0725-0726,0861-0862,9380-9389,4541-4542,4562-4569,4578-4579,5455-5461"></Range>
+        <Range cityId="012010" prefix="8120-8122,9360-9364,9775-9781"></Range>
+        <Range cityId="012011" prefix="0722,9390-9399,9740-9745,4592-4595,4598-4599"></Range>
+        <Range cityId="012012" prefix="9378-9379,9791-9799"></Range>
+        <Range cityId="012013" prefix="4540"></Range>
+        <Range cityId="012014" prefix="0867-0868,9370-9377,9785-9790"></Range>
+      </Range>
+      <Range prefix="137">
+        <Range cityId="012001" prefix="0723,9777-9778"></Range>
+        <Range cityId="012002" prefix="0724,8992,9722-9725,9779-9780"></Range>
+        <Range cityId="012003" prefix="7409-7414,9787-9788"></Range>
+        <Range cityId="012004" prefix="0725"></Range>
+        <Range cityId="012005" prefix="0710-0719,9700-9709"></Range>
+        <Range cityId="012006" prefix="0729,8993-8994,9710-9721"></Range>
+        <Range cityId="012007" prefix="0720,7419"></Range>
+        <Range cityId="012008" prefix="0727,9756-9776"></Range>
+        <Range cityId="012009" prefix="0721,9726-9755"></Range>
+        <Range cityId="012010" prefix="8990"></Range>
+        <Range cityId="012011" prefix="0722"></Range>
+        <Range cityId="012012" prefix="0726,7400-7406,9789-9799"></Range>
+        <Range cityId="012014" prefix="0728,9781-9786"></Range>
+      </Range>
+    </Range>
+  </CountryRegion>
+</Structure>

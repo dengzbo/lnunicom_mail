@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <bean id="dataSource" class="com.ceno.sandbox.email.addrbook.util.JetonDataSource"/>
+
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource">
+      <ref local="dataSource"/>
+    </property>
+  </bean>
+
+  <bean id="sessionFactory"
+        class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <property name="dataSource">
+      <ref local="dataSource"/>
+    </property>
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">
+          org.hibernate.dialect.OracleDialect
+        </prop>
+        <prop key="hibernate.show_sql">
+          false
+        </prop>
+      </props>
+    </property>
+    <property name="mappingResources">
+      <list>
+        <value>/com/ceno/mail/addrbook/dao/hbm/po/AddressBookPO.hbm.xml</value>
+        <value>/com/ceno/mail/addrbook/dao/hbm/po/GroupPO.hbm.xml</value>
+        <value>/com/ceno/mail/addrbook/dao/hbm/po/ContactPO.hbm.xml</value>
+        <value>/com/ceno/mail/addrbook/dao/hbm/po/ContactAttributePO.hbm.xml</value>
+      </list>
+    </property>
+  </bean>
+
+  <bean id="addressBookDAO" class="com.ceno.sandbox.email.addrbook.dao.hbm.HbmAddressBookDAO">
+    <property name="sessionFactory">
+      <ref local="sessionFactory"/>
+    </property>
+  </bean>
+
+  <bean id="addressBookDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="transactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="addressBookDAO"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="addressBookManager" class="com.ceno.sandbox.email.addrbook.impl.AddressBookManagerImpl"
+        singleton="true">
+    <property name="addressBookDAO">
+      <ref local="addressBookDAOProxy"/>
+    </property>
+  </bean>
+
+  <bean id="groupDAO" class="com.ceno.sandbox.email.addrbook.dao.hbm.HbmGroupDAO">
+    <property name="sessionFactory">
+      <ref local="sessionFactory"/>
+    </property>
+  </bean>
+
+  <bean id="groupDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="transactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="groupDAO"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="groupManager" class="com.ceno.sandbox.email.addrbook.impl.GroupManagerImpl"
+        singleton="true">
+    <property name="groupDAO">
+      <ref local="groupDAOProxy"/>
+    </property>
+  </bean>
+
+  <bean id="contactDAO" class="com.ceno.sandbox.email.addrbook.dao.hbm.HbmContactDAO">
+    <property name="sessionFactory">
+      <ref local="sessionFactory"/>
+    </property>
+  </bean>
+
+  <bean id="contactDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="transactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="contactDAO"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="contactManager" class="com.ceno.sandbox.email.addrbook.impl.ContactManagerImpl"
+        singleton="true">
+    <property name="contactDAO">
+      <ref local="contactDAOProxy"/>
+    </property>
+  </bean>
+
+  <bean id="contactAttributeDAO" class="com.ceno.sandbox.email.addrbook.dao.hbm.HbmContactAttributeDAO">
+    <property name="sessionFactory">
+      <ref local="sessionFactory"/>
+    </property>
+  </bean>
+
+  <bean id="contactAttributeDAOProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager">
+      <ref local="transactionManager"/>
+    </property>
+    <property name="target">
+      <ref local="contactAttributeDAO"/>
+    </property>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="*">PROPAGATION_REQUIRED</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="contactAttributeManager" class="com.ceno.sandbox.email.addrbook.impl.ContactAttributeManagerImpl"
+        singleton="true">
+    <property name="contactAttributeDAO">
+      <ref local="contactAttributeDAOProxy"/>
+    </property>
+  </bean>
+
+  <bean id="userHelperDAO" class="com.ceno.sandbox.email.addrbook.ent.dao.jdbc.JdbcUserHelperDAO"
+        singleton="true">
+    <property name="dataSource">
+      <ref local="dataSource"/>
+    </property>
+  </bean>
+
+  <bean id="addrbookLogger" class="com.ceno.sandbox.email.addrbook.impl.AddrbookLoggerImpl" singleton="true"/>
+</beans>

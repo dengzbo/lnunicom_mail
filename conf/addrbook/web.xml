@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+  <status>
+    <resources id="209" prefix="" resource="com.ceno.sandbox.email.addrbook.resources.msg"/>
+  </status>
+</xml-config>

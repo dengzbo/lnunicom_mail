@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  此文件定义创建帐号的时候执行的插件。
+
+  将此文件部署到admin和webmail服务中
+ -->
+<xml-config>
+  <managers>
+    <factory name="umc">
+      <manager name="email_account">
+        <!-- 自动开通短信功能 -->
+        <listener name="email_account_sms_service"/>
+        <!-- 自动开通短信收藏功能 -->
+        <listener name="email_account_sms_store"/>
+        <!-- 自动根据手机号判断用户的地区所在 -->
+        <listener name="email_account_zone_fetcher"/>
+	<!-- 自动开通查/杀毒功能 
+             开通杀毒功能,需要配置参数action_type的value="kill_virus"
+	     开通查毒功能,需要配置参数action_type的value="scan_virus"
+	-->
+	<!--     
+        <listener name="email_account_antivirus_service">
+          <param name="action_type" value="kill_virus"/>
+        </listener>
+        -->
+      </manager>
+    </factory>
+    <factory name="business">
+      <manager name="purchase">
+        <!-- 自动绑定支付方式为手机支付 -->
+        <listener name="purchase_bind_payment">
+          <param name="payment_type" value="mobile_bind"/>
+        </listener>
+      </manager>
+    </factory>
+  </managers>
+</xml-config>
+

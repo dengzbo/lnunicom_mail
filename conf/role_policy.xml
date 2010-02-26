@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<security xmlns="http://www.ceno.cn/security"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.ceno.cn/security.xsd">
+  <policy>
+    <grants>
+<!--
+      权限配置说明
+      permission name="一级权限(指业务系统主页面左边的7个页面链接)" class="不用修改,都用com.ceno.security.ActionPermission"
+                 action="二级权限(指点击业务系统主页面左边的页面链接后,在主页面右边出现的页面链接)"
+      以下是所有的功能列表:
+      一级权限name          一级权限说明      二级权限action      二级权限说明
+      admin_manage          管理员管理        admin_list          管理员列表
+      admin_manage          管理员管理        admin_add           新建管理员
+      admin_manage          管理员管理        admin_search        查询管理员
+      admin_manage          管理员管理        admin_updatepwd     修改密码
+      modify_pass           修改密码          *                   无二级权限,点击链接后即可修改密码
+      customization_center  定制中心          new_template_list   模板列表
+      customization_center  定制中心          new_template_add    添加模板
+      customization_center  定制中心          price_list          价格策略列表
+      customization_center  定制中心          price_create        添加价格策略
+      customization_center  定制中心          template_group_list        模板组列表
+      customization_center  定制中心          template_group_add        添加模板组
+      customization_center  定制中心          template_business_list        模板业务代码列表
+      customization_center  定制中心          template_upgrade_list        模板升级关系列表
+      customization_center  定制中心          template_upgrade_add        添加模板升级关系
+      customization_center  定制中心          zone_set        地区配置
+      bill_center           帐户中心/用户管理 new_email_create    个人邮箱开户
+      bill_center           帐户中心/用户管理 new_query_users     个人邮箱查询
+      bill_center           帐户中心/用户管理 new_domain_create   新企业域开户
+      bill_center           帐户中心/用户管理 new_query_domain    企业域查询
+      bill_center           帐户中心/用户管理 freeupgrade         免费用户升级
+      bill_center           帐户中心/用户管理 new_batch_create_users_upload批量个人邮箱开户
+      bill_center           帐户中心/用户管理 new_batch_delete_users_upload批量个人邮箱销户
+      bill_center           帐户中心/用户管理 new_batch_history 批量开户(销户)历史
+      bill_center           帐户中心/用户管理 purchase_query_binding  查询绑定付费
+      bill_center           帐户中心/用户管理 pay_history_query 查询付费历史记录
+      bill_center           帐户中心/用户管理 new_batch_export_users_info 批量导出用户
+      bill_center           帐户中心/用户管理 new_batch_export_users_info_history 批量导出用户历史
+      bill_center           帐户中心/用户管理 batch_query_users_info 个人用户激活率查询
+      bill_center           帐户中心/用户管理 batch_query_history  个人用户激活率查询历史
+      card_center         卡管理中心      card_create     卡制作
+      card_center         卡管理中心      card_list     卡列表
+      card_center         卡管理中心      card_query     卡查询
+      data_log               数据与日志          new_report_main     数据报表
+      assistant_tool        辅助工具          mail_list           邮件列表
+-->
+      <!--营业员-->
+      <grant>
+        <principal name="sales_admin" class="com.ceno.security.SimplePrincipal"/>
+        <permissions>
+          <!--修改密码（管理员）分配和管理地市级管理人员-->
+          <permission name="modify_pass" class="com.ceno.security.ActionPermission"
+                      action="*"/>
+          <!--邮件公告-->
+          <permission name="assistant_tool" class="com.ceno.security.ActionPermission"
+                      action="mail_list"/>
+          <!--为个人邮箱查询显示所有状态用-->
+          <permission name="network_admin" class="com.ceno.security.ActionPermission"
+                      action="*"/>
+        </permissions>
+      </grant>
+
+      <!--地区管理员-->
+      <grant>
+        <principal name="zone_admin" class="com.ceno.security.SimplePrincipal"/>
+        <permissions>
+          <!--修改密码（管理员）-->
+          <permission name="admin_manage" class="com.ceno.security.ActionPermission"
+                      action="admin_updatepwd,admin_list,admin_add"/>
+          <!--本地业务:查找用户、新增用户、删除用户-->
+          <permission name="bill_center" class="com.ceno.security.ActionPermission"
+                      action="new_email_create,new_query_users"/>
+          <!--邮件公告-->
+          <permission name="assistant_tool" class="com.ceno.security.ActionPermission"
+                      action="mail_list"/>
+          <!--为个人邮箱查询显示所有状态用-->
+          <permission name="network_admin" class="com.ceno.security.ActionPermission"
+                      action="*"/>
+        </permissions>
+      </grant>
+
+      <!--超级管理员-->
+      <grant>
+        <principal name="SAD" class="com.ceno.security.SimplePrincipal"/>
+        <permissions>
+          <permission name="*" class="com.ceno.security.ActionPermission" action="*"/>
+        </permissions>
+      </grant>
+    </grants>
+  </policy>
+</security>

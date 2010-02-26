@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+  <journal>
+    <tables>
+      <!--管理员操作日志-->
+      <table name="addrbook_add_group" appenders="daily_hash">
+        <field name="level" type="str"/>
+        <field name="date_time" type="date_time"/>
+        <field name="domainid" type="int"/>
+        <field name="admin_name" type="str"/>
+        <field name="parent_name" type="str"/>
+        <field name="group_name" type="str"/>
+        <format class="generic">
+          <rule class="StringArray" format="array" arguments="$level_id|$date_time|$each"/>
+        </format>
+      </table>
+      <table name="addrbook_rm_group" appenders="daily_hash">
+        <field name="level" type="str"/>
+        <field name="date_time" type="date_time"/>
+        <field name="domainid" type="int"/>
+        <field name="admin_name" type="str"/>
+        <field name="group_name" type="str"/>
+        <format class="generic">
+          <rule class="StringArray" format="array" arguments="$level_id|$date_time|$each"/>
+        </format>
+      </table>
+      <table name="addrbook_chg_group_name" appenders="daily_hash">
+        <field name="level" type="str"/>
+        <field name="date_time" type="date_time"/>
+        <field name="domainid" type="int"/>
+        <field name="admin_name" type="str"/>
+        <field name="old_group_name" type="str"/>
+        <field name="new_group_name" type="str"/>
+        <format class="generic">
+          <rule class="StringArray" format="array" arguments="$level_id|$date_time|$each"/>
+        </format>
+      </table>
+      <table name="addrbook_mv_group" appenders="daily_hash">
+        <field name="level" type="str"/>
+        <field name="date_time" type="date_time"/>
+        <field name="domainid" type="int"/>
+        <field name="admin_name" type="str"/>
+        <field name="group_name" type="str"/>
+        <field name="old_parent_name" type="str"/>
+        <field name="new_parent_name" type="str"/>
+        <format class="generic">
+          <rule class="StringArray" format="array" arguments="$level_id|$date_time|$each"/>
+        </format>
+      </table>
+      <table name="addrbook_add_contact" appenders="daily_hash">
+        <field name="level" type="str"/>
+        <field name="date_time" type="date_time"/>
+        <field name="domainid" type="int"/>
+        <field name="admin_name" type="str"/>
+        <field name="group_name" type="str"/>
+        <field name="contact_name" type="str"/>
+        <format class="generic">
+          <rule class="StringArray" format="array" arguments="$level_id|$date_time|$each"/>
+        </format>
+      </table>
+      <table name="addrbook_rm_contact" appenders="daily_hash">
+        <field name="level" type="str"/>
+        <field name="date_time" type="date_time"/>
+        <field name="domainid" type="int"/>
+        <field name="admin_name" type="str"/>
+        <field name="group_name" type="str"/>
+        <field name="contact_name" type="str"/>
+        <format class="generic">
+          <rule class="StringArray" format="array" arguments="$level_id|$date_time|$each"/>
+        </format>
+      </table>
+      <!-- 群发邮件的日志 -->
+      <table name="addrbook_sent" appenders="daily_hash">
+        <field name="level" type="str"/>
+        <field name="date_time" type="date_time"/>
+        <field name="domainid" type="int"/>
+        <field name="username" type="str"/>
+        <field name="group_name" type="str"/>
+        <field name="include_sub_groups" type="str"/>
+        <field name="receiver_count" type="int"/>
+        <field name="receivers" type="str"/>
+        <field name="subject" type="str"/>
+        <format class="generic">
+          <rule class="StringArray" format="array" arguments="$level_id|$date_time|$each"/>
+        </format>
+      </table>
+    </tables>
+  </journal>
+</xml-config>

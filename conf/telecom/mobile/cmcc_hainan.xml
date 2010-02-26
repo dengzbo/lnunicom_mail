@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<Structure type="geographic_areas">
+  <CountryRegion code="86" id="CHN">
+    <Range prefix="*" provinceId="0029">
+      <Range prefix="136">
+        <Range cityId="029001" prefix="1750-1759,2750-2759,4750-4759,4860-4869,8750-8759,9750-9759,9890-9899,3750-3769"></Range>
+      </Range>
+      <Range prefix="138">
+        <Range cityId="029001" prefix="0750-0769,7600-7699"></Range>
+      </Range>
+      <Range prefix="139">
+        <Range cityId="029001" prefix="0750-0769,7600-7699"></Range>
+      </Range>
+      <Range prefix="135">
+        <Range cityId="029001" prefix="1800-1809,1880-1889,1980-1989"></Range>
+      </Range>
+      <Range prefix="137">
+        <Range cityId="029001" prefix="0750-0759"></Range>
+      </Range>
+    </Range>
+  </CountryRegion>
+</Structure>

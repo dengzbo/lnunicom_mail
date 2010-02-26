@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coin xmlns="http://www.ceno.cn/coin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <objects namespace="log">
+    <factory name="factory" class="log:simple_factory" addObjectMethod="addMeta">
+      <object name="default" class="log:logger_meta">
+        <property name="pattern">
+          <value>*</value>
+        </property>
+        <property name="priority">
+          <value>INFO</value>
+        </property>
+      </object>
+      <object name="customized_meta" class="log:logger_meta">
+        <property name="pattern">
+          <value>class:org.*</value>
+        </property>
+        <property name="priority">
+          <value>INFO</value>
+        </property>
+      </object>
+    </factory>
+  </objects>
+</coin>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-config>
+  <jade-conf>
+      <property name="mail.stat.path" value="${UMAIL_HOME}/var/stat"/>
+  </jade-conf>
+
+  <nas>
+    <services>
+      <service name="dam"/>
+    </services>
+  </nas>
+
+</xml-config>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="GBK"?>
+<coin xmlns="http://www.ceno.cn/coin">
+	<objects namespace="addressbook">
+		<!--数据源-->
+		<object name="dataSource" class="com.ceno.sandbox.email.addrbook.util.JetonDataSource">
+		</object>
+		<object name="addressBookDAO" class="com.ceno.sandbox.email.addrbook.dao.hbm.HbmAddressBookDAO">
+		</object>
+		<!--<object name="addressBookDAOProxy">-->
+		<!--</object>-->
+		<object name="addressBookManager" class="com.ceno.sandbox.email.addrbook.impl.AddressBookManagerImpl">
+			<property name="addressBookDAO">
+				<!--<ref local="addressBookDAO"/>-->
+				<object ref="addressBookDAO"/>
+			</property>
+		</object>
+		<object name="groupDAO" class="com.ceno.sandbox.email.addrbook.dao.hbm.HbmGroupDAO">
+		</object>
+		<!--<object name="groupDAOProxy">-->
+		<!--</object>-->
+		<object name="groupManager" class="com.ceno.sandbox.email.addrbook.impl.GroupManagerImpl">
+			<property name="groupDAO">
+				<object ref="groupDAO"/>
+				<!--<ref local="groupDAO"/>-->
+			</property>
+		</object>
+		<object name="contactDAO" class="com.ceno.sandbox.email.addrbook.dao.hbm.HbmContactDAO">
+		</object>
+		<!--<object name="contactDAOProxy">-->
+		<!--</object>-->
+		<object name="contactManager" class="com.ceno.sandbox.email.addrbook.impl.ContactManagerImpl">
+			<property name="contactDAO">
+				<object ref="contactDAO"/>
+				<!--<ref local="contactDAO"/>-->
+			</property>
+		</object>
+		<object name="contactAttributeDAO" class="com.ceno.sandbox.email.addrbook.dao.hbm.HbmContactAttributeDAO">
+		</object>
+		<!--<object name="contactAttributeDAOProxy">-->
+		<!--</object>-->
+		<object name="contactAttributeManager" class="com.ceno.sandbox.email.addrbook.impl.ContactAttributeManagerImpl">
+			<property name="contactAttributeDAO">
+				<object ref="contactAttributeDAO"/>
+				<!--<ref local="contactAttributeDAO"/>-->
+			</property>
+		</object>
+		<object name="userHelperDAO" class="com.ceno.sandbox.email.addrbook.ent.dao.jdbc.JdbcUserHelperDAO">
+			<!--<property name="dataSource">-->
+				<!--<ref local="dataSource"/>-->
+			<!--</property>-->
+		</object>
+		<object name="addrbookLogger" class="com.ceno.sandbox.email.addrbook.impl.AddrbookLoggerImpl">
+		</object>
+	</objects>
+</coin>

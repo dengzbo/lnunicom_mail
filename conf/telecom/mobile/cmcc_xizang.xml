@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<Structure type="geographic_areas">
+  <CountryRegion code="86" id="CHN">
+    <Range prefix="*" provinceId="0030">
+      <Range prefix="136">
+        <Range cityId="030001" prefix="1896,2896,4896,5896,3896"></Range>
+        <Range cityId="030002" prefix="1897,2897,4897,5897,3897"></Range>
+        <Range cityId="030003" prefix="1893,2893,4893,5893,3893"></Range>
+        <Range cityId="030004" prefix="1890-1891,1898-1899,2890-2891,2898-2899,4890-4891,4898-4899,5890-5891,5898-5899,5950-5954,3890-3891,3898-3899"></Range>
+        <Range cityId="030005" prefix="1895,2895,4895,5895,3895"></Range>
+        <Range cityId="030006" prefix="1892,2892,4892,5892,3892"></Range>
+        <Range cityId="030007" prefix="1894,2894,4894,5894,3894"></Range>
+      </Range>
+      <Range prefix="138">
+        <Range cityId="030001" prefix="8906"></Range>
+        <Range cityId="030002" prefix="8907"></Range>
+        <Range cityId="030003" prefix="8903"></Range>
+        <Range cityId="030004" prefix="8900-8901,8908-8909"></Range>
+        <Range cityId="030005" prefix="8905"></Range>
+        <Range cityId="030006" prefix="8902"></Range>
+        <Range cityId="030007" prefix="8904"></Range>
+      </Range>
+      <Range prefix="139">
+        <Range cityId="030001" prefix="0896,8906,8996"></Range>
+        <Range cityId="030002" prefix="0897,8907,8997"></Range>
+        <Range cityId="030003" prefix="0893,8903,8993"></Range>
+        <Range cityId="030004" prefix="0890-0891,0898-0899,8900-8901,8908-8909,8990-8991,8998-8999"></Range>
+        <Range cityId="030005" prefix="0895,8905,8995"></Range>
+        <Range cityId="030006" prefix="0892,8902,8992"></Range>
+        <Range cityId="030007" prefix="0894,8904,8994"></Range>
+      </Range>
+    </Range>
+  </CountryRegion>
+</Structure>

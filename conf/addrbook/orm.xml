@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+<coin xmlns="http://www.ceno.cn/coin">
+  <objects namespace="orm">
+    <object ref="po_manager">
+      <property name="class" setter="addClass">
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.AddressBookPO</value>
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.GroupPO</value>
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.ContactPO</value>
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.ContactAttributePO</value>
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.DomainPO</value>
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.EmailUserPO</value>
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.ServeGrantPO</value>
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.UserInfoPO</value>
+        <value>com.ceno.sandbox.email.addrbook.dao.hbm.po.GroupContactPO</value>
+      </property>
+    </object>
+  </objects>
+</coin>

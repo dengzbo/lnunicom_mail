@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<Structure type="geographic_areas">
+  <CountryRegion code="86" id="CHN">
+    <Range prefix="*" provinceId="0028">
+      <Range prefix="136">
+        <Range cityId="028001" prefix="2858,4858,7858,5858,6858,3858"></Range>
+        <Range cityId="028002" prefix="2859,4859,5859,6859,7859,3859"></Range>
+        <Range cityId="028003" prefix="1852,2852-2853,4852,5852,6852,7852,3852"></Range>
+        <Range cityId="028004" prefix="1854,2854,6854,4854,5854,7854,3854"></Range>
+        <Range cityId="028005" prefix="0850-0859,1850-1851,1857-1859,2850-2851,4850-4851,5850-5851,6850,7850-7851,2850-2851,2 856,6850-6851,8850-8851,3850-3851"></Range>
+        <Range cityId="028006" prefix="2857,4857,5857,6857,7857,3857"></Range>
+        <Range cityId="028007" prefix="1855,2855,4855,5855,6855,7855,3855"></Range>
+        <Range cityId="028008" prefix="1856,4856,5856,6856,7856,3856"></Range>
+        <Range cityId="028009" prefix="1853,4853,5853,6853,7853,3853"></Range>
+      </Range>
+      <Range prefix="138">
+        <Range cityId="028001" prefix="8580-8589"></Range>
+        <Range cityId="028002" prefix="8590-8599"></Range>
+        <Range cityId="028003" prefix="8520-8529"></Range>
+        <Range cityId="028004" prefix="8540-8549"></Range>
+        <Range cityId="028005" prefix="0940-0949,8500-8519"></Range>
+        <Range cityId="028006" prefix="8570-8579"></Range>
+        <Range cityId="028007" prefix="8550-8559"></Range>
+        <Range cityId="028008" prefix="8560-8569"></Range>
+        <Range cityId="028009" prefix="8530-8539"></Range>
+      </Range>
+      <Range prefix="139">
+        <Range cityId="028001" prefix="0858,8448,8460-8464,8537-8538,8590-8594"></Range>
+        <Range cityId="028002" prefix="0859,8449,8465-8469,8509,8539,8595-8599"></Range>
+        <Range cityId="028003" prefix="0852,8420-8429,8442,8450-8454,8490-8499,8520-8526,8560-8569"></Range>
+        <Range cityId="028004" prefix="0854,8444,8506-8508,8575-8579"></Range>
+        <Range cityId="028005" prefix="0850-0851,8400-8419,8430-8441,8480-8489,8500-8505,8510-8519,8540-8559"></Range>
+        <Range cityId="028006" prefix="0857,8447,8455-8459,8470-8479,8535-8536,8587-8589"></Range>
+        <Range cityId="028007" prefix="0855,8445,8527-8529,8580-8584"></Range>
+        <Range cityId="028008" prefix="0856,8446,8533-8534,8585-8586"></Range>
+        <Range cityId="028009" prefix="0853,8443,8530-8532,8570-8574"></Range>
+      </Range>
+      <Range prefix="135">
+        <Range cityId="028001" prefix="0858,1858,9580-9589"></Range>
+        <Range cityId="028002" prefix="0859,1859,9590-9599"></Range>
+        <Range cityId="028003" prefix="0851-0852,1180-1189,1852,9520-9529"></Range>
+        <Range cityId="028004" prefix="0850,0854,1854,9540-9549"></Range>
+        <Range cityId="028005" prefix="1190-1199,1850-1851,9500-9519"></Range>
+        <Range cityId="028006" prefix="0857,1857,9570-9579"></Range>
+        <Range cityId="028007" prefix="0855,1855,9550-9559"></Range>
+        <Range cityId="028008" prefix="0856,1856,9560-9569"></Range>
+        <Range cityId="028009" prefix="0853,1853,9530-9539"></Range>
+      </Range>
+      <Range prefix="137">
+        <Range cityId="028001" prefix="0858"></Range>
+        <Range cityId="028002" prefix="0859"></Range>
+        <Range cityId="028003" prefix="0850-0852"></Range>
+        <Range cityId="028004" prefix="0854,6540-6549"></Range>
+        <Range cityId="028005" prefix="6500-6519"></Range>
+        <Range cityId="028006" prefix="0857"></Range>
+        <Range cityId="028007" prefix="0855,6550-6559"></Range>
+        <Range cityId="028008" prefix="0856,6560-6569"></Range>
+        <Range cityId="028009" prefix="0853"></Range>
+      </Range>
+    </Range>
+  </CountryRegion>
+</Structure>

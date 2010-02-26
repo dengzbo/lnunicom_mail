@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="GBK" ?>
+<coin xmlns="http://www.ceno.cn/coin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <objects namespace="role_relation">
+    <object name="sales_admin" class="naisa.business.jaas.RoleRelationEntity">
+      <property name="title">
+        <value>营业员</value>
+      </property>
+      <property name="level">
+        <value>3</value>
+      </property>
+    </object>
+
+    <object name="zone_admin" class="naisa.business.jaas.RoleRelationEntity">
+      <property name="title">
+        <value>地区管理员</value>
+      </property>
+      <property name="level">
+        <value>2</value>
+      </property>
+      <property name="children">
+        <object ref="sales_admin"/>
+      </property>
+    </object>
+
+    <object name="SAD" class="naisa.business.jaas.RoleRelationEntity">
+      <property name="title">
+        <value>超级管理员</value>
+      </property>
+      <property name="level">
+        <value>1</value>
+      </property>
+      <property name="children">
+        <object ref="sales_admin"/>
+        <object ref="zone_admin"/>
+     </property>
+    </object>
+  </objects>
+</coin>

@@ -1,0 +1,5 @@
+发件人：$sender
+主题：$subject
+#if ( $attachment )
+含有附件
+#end 

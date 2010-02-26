@@ -1,0 +1,10 @@
+<xml-config>
+    <tcm>
+        <socket port="9004" maxThreads="100" minSpareThreads="5"
+            maxSpareThreads="10" soTimeout="300000">
+            <pipeline name="api_pipe">
+                <valve name="api_valve" class="naisa.api.server.socket.ApiServerValve"/>
+            </pipeline>
+        </socket>
+    </tcm>
+</xml-config>

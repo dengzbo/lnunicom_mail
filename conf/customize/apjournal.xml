@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+  <journal>
+    <tables>
+        <!--创建用户-->
+        <table name="ap_assign_employee" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="entid" type="str"/>
+        <field name="userlogin" type="str"/>
+        <field name="password" type="str"/>
+        <field name="userid" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|requestType|apid|entid|userlogin|password|userid"/>
+        </format>
+      </table>
+
+      <!--创建域-->
+      <table name="ap_create_company" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="entid" type="str"/>
+        <field name="password" type="str"/>
+        <field name="entlogin" type="str"/>
+        <field name="DomainDes" type="str"/>
+        <field name="DomainName" type="str"/>
+        <field name="MailBoxSize" type="str"/>
+        <field name="MaxUserNum" type="str"/>
+        <field name="SizeOverRate" type="str"/>
+        <field name="MaxAttachsSize" type="str"/>
+        <field name="MaxAttachSize" type="str"/>
+        <field name="Pop3" type="str"/>
+        <field name="VoiceMail" type="str"/>
+        <field name="SecurMail" type="str"/>
+        <field name="HtmlMail" type="str"/>
+        <field name="TimeMail" type="str"/>
+        <field name="VideoMail" type="str"/>
+        <field name="MailList" type="str"/>
+        <field name="MailScan" type="str"/>
+        <field name="EntAddrBook" type="str"/>
+        <field name="PopMail" type="str"/>
+        <field name="Calendar" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|requestType|apid|entid|password|entlogin|DomainDes|DomainName|MailBoxSize|MaxUserNum|SizeOverRate|MaxAttachsSize|MaxAttachSize|Pop3|VoiceMail|SecurMail|HtmlMail|TimeMail|VideoMail|MailList|MailScan|EntAddrBook|PopMail|Calendar"/>
+        </format>
+      </table>
+
+       <!--删除域-->
+       <table name="ap_delete_company" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="entid" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|requestType|apid|entid"/>
+        </format>
+      </table>
+
+       <!--修改用户密码-->
+      <table name="ap_modify_employee" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="entid" type="str"/>
+        <field name="userid" type="str"/>
+        <field name="password" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|requestType|apid|entid|userid|password"/>
+        </format>
+      </table>
+
+      <!--删除用户-->
+      <table name="ap_revoke_employee" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="entid" type="str"/>
+        <field name="userlogin" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|requestType|apid|entid|userlogin"/>
+        </format>
+      </table>
+
+      <!--更改域的状态-->
+      <table name="ap_update_company_status" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="entid" type="str"/>
+        <field name="operatecode" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|requestType|apid|entid|operatecode"/>
+        </format>
+      </table>
+
+
+      <!--更改用户的状态-->
+      <table name="ap_update_employee_status" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="entid" type="str"/>
+        <field name="userlogin" type="str"/>
+        <field name="operatecode" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|requestType|apid|entid|userlogin|operatecode"/>
+        </format>
+      </table>
+
+      <!--更改域的属性-->
+      <table name="ap_update_company_properties" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="entid" type="str"/>
+        <field name="companyname" type="str"/>
+        <field name="MailBoxSize" type="str"/>
+        <field name="MaxUserNum" type="str"/>
+        <field name="SizeOverRate" type="str"/>
+        <field name="MaxAttachSize" type="str"/>
+        <field name="MaxAttachsSize" type="str"/>
+        <field name="Pop3" type="str"/>
+        <field name="VoiceMail" type="str"/>
+        <field name="SecurMail" type="str"/>
+        <field name="HtmlMail" type="str"/>
+        <field name="TimeMail" type="str"/>
+        <field name="VideoMail" type="str"/>
+        <field name="MailList" type="str"/>
+        <field name="MailScan" type="str"/>
+        <field name="EntAddrBook" type="str"/>
+        <field name="PopMail" type="str"/>
+        <field name="Calendar" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|requestType|apid|entid|companyname|MailBoxSize|MaxUserNum|SizeOverRate|MaxAttachSize|MaxAttachsSize|Pop3|VoiceMail|SecurMail|HtmlMail|TimeMail|VideoMail|MailList|MailScan|EntAddrBook|PopMail|Calendar"/>
+        </format>
+      </table>
+
+      <!--返回状态记录-->
+      <table name="ap_response" appenders="daily_hash">
+        <field name="time" type="time"/>
+        <field name="requestType" type="str"/>
+        <field name="apid" type="str"/>
+        <field name="operator" type="str"/>
+        <field name="status" type="str"/>
+        <field name="message" type="str"/>
+        <!-- 插入记录的时候格式化器 -->
+        <format class="generic">
+          <rule class="parameters" format="parameters"
+                arguments="$time|responseType|apid|operator|status|message"/>
+        </format>
+      </table>
+
+
+    </tables>
+  </journal>
+</xml-config>

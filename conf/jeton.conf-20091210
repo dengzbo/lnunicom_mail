@@ -1,0 +1,17 @@
+#==========================================================================
+#     数据库配置
+#==========================================================================
+
+# 数据库名称, Jeton 可以支持多个数据库
+naisa.jeton.list=default
+
+#数据库的配置信息
+
+naisa.jeton.default.driver=oracle.jdbc.driver.OracleDriver
+naisa.jeton.default.url=jdbc:oracle:thin:@192.168.6.208:1521:umail
+naisa.jeton.default.verify_conn_sql=select 'A' from dual
+naisa.jeton.default.provider=oracle
+naisa.jeton.default.username=lnumail
+naisa.jeton.default.password=lnumail
+naisa.jeton.default.min_conns=1
+naisa.jeton.default.max_conns=3

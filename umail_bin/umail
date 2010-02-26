@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "version" = "$1" ]; then
+  more /ceno/product/umail/bin/.version
+  exit
+fi
+
+/ceno/product/umail/bin/run_python.sh /ceno/product/umail/bin/adfctl.py -c /ceno/product/umail/conf/servers.xml $*
+

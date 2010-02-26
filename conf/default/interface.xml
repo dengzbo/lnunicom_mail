@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="GBK"?> 
+<Interface>
+  <CSS timestamp="978663495352">
+    <Class color="#585555">
+	  <ClassName>a.left</ClassName>
+	  <Description>导航字体链接颜色</Description>
+    </Class>
+    <Class color="#000000">
+      <ClassName>a.left:hover, a.left:visited</ClassName>
+      <Description>导航字体点击后颜色</Description>
+    </Class>
+    <Class background-color="#74AAF4">
+      <ClassName>tr.list</ClassName>
+      <Description>导航条一级背景颜色</Description>
+    </Class>
+    <Class background-color="#F6FBFA">
+      <ClassName>tr.list1</ClassName>
+      <Description>导航条二级背景颜色</Description>
+    </Class>
+    <Class background-color="#74AAF4" color="#000000">
+      <ClassName>.title,tr.listtitle,tr.foldertitle</ClassName>
+      <Description>非激活链接颜色&lt;br&gt;表头背景颜色</Description>
+    </Class>
+    <Class background-color="#F6FBFA">
+      <ClassName>table.contentbg</ClassName>
+      <Description>表格背景颜色</Description>
+    </Class>
+	    <Class background-color="#64EEFA">
+      <ClassName>.configtitlebg</ClassName>
+      <Description>配置页面标题背景色</Description>
+    </Class>
+    <Class color="#ff0000">
+      <ClassName>a.mailsubject</ClassName>
+      <Description>主题字体颜色</Description>
+	  </Class>
+    <Class color="#0000ff">
+      <ClassName>a.mailsubject:hover, a.mailsubject:visited</ClassName>
+      <Description>主题字体点击后颜色</Description>
+   </Class>
+    <Class color="#ff8000">
+      <ClassName>a.common</ClassName>
+      <Description>一般链接颜色</Description>
+    </Class>
+    <Class color="#ff0080">
+	    <ClassName>a.common:hover, a.common:visited</ClassName>
+	    <Description>一般链接点击后颜色</Description>
+	  </Class>
+	  <Class color="#07078F">
+	     <ClassName>a.action</ClassName>
+	     <Description>动作按钮字体颜色</Description>
+	  </Class>
+	  <Class color="#400080">
+	     <ClassName>a.action:hover, a.action:visited</ClassName>
+	     <Description>动作按钮字体点击后颜色</Description>
+	 </Class>
+  </CSS>
+  <HTML timestamp="978734000000">
+	<MainPage>
+		<Title>上海Ceno soft</Title>
+	</MainPage>
+    <PageFooter>
+      <Content>
+      	<Line>        &amp;copy;Copyright 2000-2005 Ceno Technologies, Ltd.   All rights reserved&lt;br&gt;</Line>
+      	<Line>        版权所有： 圣诺网络技术（上海）有限公司&lt;br&gt;</Line>
+      	<Line>        E-mail：&lt;a class="action" href="mailto:webmaster@ceno.cn"&gt;webmaster@ceno.cn&lt;/a&gt;</Line>
+      </Content>
+    </PageFooter>
+    <Banner>
+      <Image>img/banner.gif</Image>
+      <Link>http://www.ceno.cn</Link>
+    </Banner>
+    <Logo>
+      <Link>http://www.ceno.cn</Link>
+      <Image>img/logo.gif</Image>
+    </Logo>
+    <Logout>
+      <Link></Link>
+    </Logout>
+	<Password>
+	  <Link>http://www.ceno.cn</Link>
+	</Password>
+  </HTML>
+</Interface>
+

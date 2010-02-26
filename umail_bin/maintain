@@ -1,0 +1,184 @@
+#!/bin/bash
+#UMail-TX 维护工具介绍
+#为方便提供TSE,SE维护系统. 
+#操作和参数说明: 
+#    maintain backup 	备份系统的首页, 首页路径有调整时,需要修改变量webrootPath的值;
+#    maintain update data-file  根据data-file提供的数据更新维护页面(需要注意data-file的格式和维护模板的格式);
+#    maintain start [data-file] 根据data-file提供的数据更新维护页面,并替换首页;
+#    maintain stop      结束系统维护, 将恢复备份的首页.
+#
+#文件格式:
+#   1. 维护界面模板文件(maintain_template.html)的格式
+#	1	<html>
+#	2	<body>
+#	3	<div id="title">
+#	4		{title}
+#	5	</div>
+#	6	<div id="content">
+#	7		{content}
+#	8	</div>
+#	9	</body>
+#	10	</html>
+#	说明: 文件里必须包含两个由花括号包含的title和content, 标题部分 {title} 会被数据文件的标题部分替换;
+#内容部分 {content} 会被数据文件的内容部分替换.
+#
+#    2. 维护数据文件()的格式
+#	1	{title-begin}
+#	2	抱歉, 系统正在维护...
+#	3	{title-end}
+#	4	{content-begin}
+#	5	维护时间从 11:11 到 12:30.
+#	6	有任何问题请联系客服. 
+#	7	
+#	8	{content-end}
+#	9
+#	说明: 文件包括两部分:头和内容;使用标记 {title-begin},{title-end},{content-begin},{content-end}分隔.
+#标记之间不能嵌套使用.
+#
+#
+#
+
+E_BADARGS=65
+processname=maintain
+maintainPath=/ceno/product/umail/web/portal/maintain
+webrootPath=/ceno/product/umail/web/portal
+templateFile=$maintainPath/maintain_template.html
+destFile=$maintainPath/maintain_index.html
+tempFile=$maintainPath/temp.dat
+
+mt_usage(){
+	echo "Usage: $processname {backup,update,start,stop} [data-file]"
+	echo "Options: "
+	echo "       backup	backup index.html file."
+	echo "       update 	update maintaince page with new data"
+	echo "       start  	start maintaince and replace index.html with maintaince page."
+	echo "       stop	finish maintaince and recover index.html"
+	echo 
+	echo " "
+	exit $E_BADARGS
+}
+
+mt_check_file(){
+	if [ -f "$dataFile" ] 
+	then 
+		dataFile=$dataFile
+	else
+		echo "File \"$dataFile\" does not exists."
+		exit $E_BADARGS
+	fi	
+}
+
+mt_backup(){
+	echo "$processname backup..."
+	cp -vf  "$webrootPath"/index.html "$maintainPath"/backup/index.html
+	cp -vf  "$webrootPath"/index.jsp "$maintainPath"/backup/index.jsp
+	echo "$processname backup ok."
+}
+
+mt_merge(){
+	rm -vrf $tempFile
+	sed -n '/<html>/,/{title}/p' $templateFile >> $tempFile
+	sed -n '/{title-begin}/,/{title-end}/p' $dataFile >> $tempFile
+	sed -n '/{title}/,/{content}/p' $templateFile >> $tempFile
+	sed -n '/{content-begin}/,/{content-end}/p' $dataFile >> $tempFile
+	sed -n '/{content}/,/<\/html>/p' $templateFile >> $tempFile
+	rm -vrf $destFile
+	sed -e 's/{title-begin}//g' \
+	    -e 's/{content-begin}//g' \
+	    -e 's/{title-begin}//g'  \
+	    -e 's/{content-begin}//g' \
+	    -e 's/{title-end}//g'  \
+	    -e 's/{content-end}//g' \
+	    -e 's/{title}//g'  \
+	    -e 's/{content}//g'  \
+	    $tempFile >> $destFile	
+}
+
+mt_update(){
+	mt_check_file
+	echo "$processname update..."
+	mt_merge
+	echo "$processname update ok."
+}
+
+
+mt_start(){
+	echo "$processname start..."
+	if [ -n "$dataFile" ]
+	then	
+		if [ -f  "$dataFile" ] 
+		then
+			mt_merge
+		else
+			echo "File \"$dataFile\" does not exists."
+			exit $E_BADARGS			
+		fi
+	fi
+
+	rm -vf "$webrootPath"/index.jsp
+ 	cp -vf "$destFile" "$webrootPath"/index.html
+	echo "$processname start ok."
+}
+
+mt_stop(){
+	echo "$processname stop..."
+	cp -vf "$maintainPath"/backup/index.jsp  "$webrootPath"/index.jsp
+ 	cp -vf "$maintainPath"/backup/index.html "$webrootPath"/index.html
+	echo "$processname stop ok."
+}
+
+
+if [ $# -lt 1 ]
+then 
+	mt_usage
+fi
+
+if [ $# -lt 2 ]
+then 
+	if [ "$1" = "update" ]
+	then 
+		mt_usage
+	fi
+fi
+
+if [ $# -gt 2 ] 
+then 
+	if [ "$1" = "start" ]
+ 	then 
+		mt_usage
+	fi
+fi
+
+if [ $# -gt 1 ]
+then 
+	if [ "$1" = "stop" ]
+	then 
+		mt_usage
+	fi
+fi
+
+
+operate=$1
+dataFile=$2
+
+
+
+case "$1" in
+	"backup")
+		mt_backup
+		;;
+	"update") 
+		mt_update		
+		;;
+	"start")
+		mt_start
+		;;
+	"stop")
+		mt_stop	
+		;;
+	*)
+		mt_usage
+		;;
+esac
+
+exit 0

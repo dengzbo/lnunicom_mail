@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xml-config xmlns="http://www.naesasoft.com/xml/config">
+  <config>
+    <property name="ares" value="${ARES_HOME}"/>
+    <property name="logs" value="${ares}/logs"/>
+  </config>
+  <jade-conf>
+    <property name="naisa.journal.scheduler.max_threads" value="20"/>
+    <property name="naisa.jeton.list" value="default"/>
+    <property name="naisa.jeton.default.driver" value="naisa.journal.jdbc.JdbcDriver"/>
+    <property name="naisa.jeton.default.url" value="${logs}"/>
+  </jade-conf>
+
+  <modules>
+    <module name="jeton"/>
+    <module name="nas"/>
+    <module name="journal_server"/>
+    <module name="journal_adapter"/>
+    <module name="tcm"/>
+  </modules>
+  <nas>
+    <services>
+      <service name="dam"/>
+    </services>
+  </nas>
+  <journal>
+    <define>
+      <appender-class>
+        <map name="database_intercept" class="naisa.journal.appender.DatabaseInterceptAppender"/>
+      </appender-class>
+    </define>
+    <init>
+      <formats>
+        <format name="default" class="generic">
+          <rule class="StringArray" format="array"
+                arguments="$time|$each"/>
+          <rule class="List" format="list"
+                arguments="$time|$each"/>
+        </format>
+      </formats>
+    </init>
+    <appenders>
+      <appender name="default" class="daily_path" path="${naisa.journal.home}" rule="name" limit="5M"/>
+    </appenders>
+    <handlers>
+      <handler name="none" class="none"/>
+      <handler name="default" class="wrapper">
+        <appender instance="default"/>
+      </handler>
+    </handlers>
+    <events>
+      <event name="default" handler="default"/>
+    </events>
+
+    <tables>
+      <!--用户登陆日志-->
+      <table name="log_mail_users_login" appenders="daily_path,database">
+        <database pool="default" table="log_mail_users_login"/>
+        <field name="datetime" type="date"/>
+        <field name="auth_type" type="str"/>
+        <field name="username" type="str"/>
+        <field name="user_type" type="str"/>
+        <field name="user_domain" type="str"/>
+        <field name="user_zone" type="str"/>
+        <field name="user_role" type="str"/>
+        <field name="client_ip" type="str"/>
+        <field name="client_port" type="int"/>
+        <field name="times" type="long"/>
+        <field name="operation_type" type="str"/>
+        <field name="operation_action" type="str"/>
+        <field name="status" type="str"/>
+        <field name="status_desc" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <!--用户开销户日志-->
+      <table name="log_mail_users" appenders="daily_path,database">
+        <database pool="default" table="log_mail_users"/>
+        <field name="datetime" type="date"/>
+        <field name="userid" type="str"/>
+        <field name="username" type="str"/>
+        <field name="user_type" type="str"/>
+        <field name="zone" type="str"/>
+        <field name="domain" type="str"/>
+        <field name="group_name" type="str"/>
+        <field name="template" type="str"/>
+        <field name="operator" type="str"/>
+        <field name="operator_ip" type="str"/>
+        <field name="operator_zone" type="str"/>
+        <field name="operator_role" type="str"/>
+        <field name="operation_action" type="str"/>
+        <field name="operation_type" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <!--用户支付日志-->
+      <table name="log_mail_payments" appenders="daily_path,database">
+        <database pool="default" table="log_mail_payments"/>
+        <field name="datetime" type="date"/>
+        <field name="payment_account" type="str"/>
+        <field name="payment_type" type="str"/>
+        <field name="business_type" type="str"/>
+        <field name="template_name" type="str"/>
+        <field name="user_name" type="str"/>
+        <field name="user_zone" type="str"/>
+        <field name="user_domain" type="str"/>
+        <field name="operator" type="str"/>
+        <field name="operator_zone" type="str"/>
+        <field name="operator_ip" type="str"/>
+        <field name="operator_port" type="int"/>
+        <field name="operation_action" type="str"/>
+        <field name="operation_type" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <!--用户购买日志-->
+      <table name="log_mail_purchases" appenders="daily_path,database">
+        <database pool="default" table="log_mail_purchases"/>
+        <field name="datetime" type="date"/>
+        <field name="template_name" type="str"/>
+        <field name="old_template" type="str"/>
+        <field name="template_type" type="str"/>
+        <field name="price_name" type="str"/>
+        <field name="old_price" type="str"/>
+        <field name="business_type" type="str"/>
+        <field name="user_name" type="str"/>
+        <field name="user_zone" type="str"/>
+        <field name="user_domain" type="str"/>
+        <field name="operator" type="str"/>
+        <field name="operator_zone" type="str"/>
+        <field name="operator_ip" type="str"/>
+        <field name="operator_port" type="int"/>
+        <field name="operation_action" type="str"/>
+        <field name="operation_type" type="str"/>
+        <field name="status" type="int"/>
+        <field name="old_status" type="int"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <!--邮件操作日志-->
+      <table name="log_mail_operation" appenders="daily_path,database">
+        <database pool="default" table="log_mail_operation"/>
+        <field name="datetime" type="date"/>
+        <field name="username" type="str"/>
+        <field name="domain" type="str"/>
+        <field name="client_ip" type="str"/>
+        <field name="client_port" type="int"/>
+        <field name="opt_cmd" type="str"/>
+        <field name="opt_args" type="str"/>
+        <field name="client_tool" type="str"/>
+        <field name="service_name" type="str"/>
+        <field name="mail_subject" type="str"/>
+        <field name="mail_id" type="str"/>
+        <field name="mail_size" type="int"/>
+        <field name="status" type="str"/>
+        <field name="status_desc" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+          <rule class="StringMap" format="StringMap"
+                arguments="$date_time|username|domain|client_ip|client_port|opt_cmd|opt_args|client_tool|service_name|mail_subject|mail_id|mail_size|status|status_desc"/>
+        </format>
+      </table>
+
+      <!--对用户操作日志-->
+      <table name="log_mail_users_opt" appenders="daily_path,database">
+        <database pool="default" table="log_mail_users_opt"/>
+        <field name="datetime" type="date"/>
+        <field name="username" type="str"/>
+        <field name="user_domain" type="str"/>
+        <field name="user_zone" type="str"/>
+        <field name="user_type" type="str"/>
+        <field name="operator" type="str"/>
+        <field name="operator_role" type="str"/>
+        <field name="operation_type" type="str"/>
+        <field name="client_ip" type="str"/>
+        <field name="client_port" type="int"/>
+        <field name="operation_cmd" type="str"/>
+        <field name="operation_args" type="str"/>
+        <field name="status" type="str"/>
+        <field name="status_desc" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <!--用户连接服务日志-->
+      <table name="log_mail_service_conn" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="client_ip" type="str"/>
+        <field name="client_port" type="int"/>
+        <field name="server_name" type="str"/>
+        <field name="service_ip" type="str"/>
+        <field name="service_port" type="int"/>
+        <field name="service_name" type="str"/>
+        <field name="conn_type" type="str"/>
+        <field name="conn_times" type="int"/>
+        <field name="status" type="str"/>
+        <field name="status_desc" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+          <rule class="StringMap" format="StringMap"
+                arguments="$date_time|client_ip|client_port|server_name|service_ip|service_port|service_name|conn_type|conn_times|status|status_desc"/>
+        </format>
+      </table>
+
+      <!--邮件出队列投递日志-->
+      <table name="log_mail_queue_out" appenders="daily_path,database">
+        <database pool="default" table="log_mail_queue_out"/>
+        <field name="datetime" type="date"/>
+        <field name="server_name" type="str"/>
+        <field name="service_name" type="str"/>
+        <field name="service_ip" type="str"/>
+        <field name="service_port" type="int"/>
+        <field name="mail_size" type="int"/>
+        <field name="mail_type" type="str"/>
+        <field name="mail_subject" type="str"/>
+        <field name="receiver_address" type="str"/>
+        <field name="receiver_domain" type="str"/>
+        <field name="receiver_name" type="str"/>
+        <field name="sender_address" type="str"/>
+        <field name="sender_name" type="str"/>
+        <field name="sender_domain" type="str"/>
+        <field name="sender_ip" type="str"/>
+        <field name="sender_port" type="int"/>
+        <field name="process_mode" type="str"/>
+        <field name="mailer" type="str"/>
+        <field name="status" type="str"/>
+        <field name="status_desc" type="str"/>
+        <format class="generic">
+          <rule class="StringMap" format="StringMap"
+                arguments="$date_time|server_name|service_name|service_ip|service_port|mail_size|mail_type|mail_subject|receiver_address|receiver_domain|receiver_name|sender_address|sender_name|sender_domain|sender_ip|sender_port|process_mode|mailer|status|status_desc"/>
+        </format>
+      </table>
+
+      <!--邮件发送入队列日志-->
+      <table name="log_mail_queue_in" appenders="daily_path,database_intercept">
+        <database pool="default" table="log_mail_queue_in"/>
+        <field name="datetime" type="date"/>
+        <field name="server_name" type="str"/>
+        <field name="service_name" type="str"/>
+        <field name="service_ip" type="str"/>
+        <field name="service_port" type="int"/>
+        <field name="mail_size" type="int"/>
+        <field name="mail_type" type="str"/>
+        <field name="mail_subject" type="str"/>
+        <field name="receivers" type="str"/>
+        <field name="sender_address" type="str"/>
+        <field name="sender_name" type="str"/>
+        <field name="sender_domain" type="str"/>
+        <field name="sender_ip" type="str"/>
+        <field name="sender_port" type="int"/>
+        <field name="mailer" type="str"/>
+        <format class="generic">
+          <rule class="StringMap" format="StringMap"
+                arguments="$date_time|server_name|service_name|service_ip|service_port|mail_size|mail_type|mail_subject|receivers|sender_address|sender_name|sender_domain|sender_ip|sender_port|mailer"/>
+        </format>
+      </table>
+
+      <!--邮件过虑规则日志-->
+      <table name="log_mail_rules" appenders="daily_path,database">
+        <database pool="default" table="log_mail_rules"/>
+        <field name="datetime" type="date"/>
+        <field name="owner_id" type="int"/>
+        <field name="owner_type" type="str"/>
+        <field name="mail_id" type="str"/>
+        <field name="mail_size" type="int"/>
+        <field name="mail_subject" type="str"/>
+        <field name="mail_type" type="str"/>
+        <field name="receiver" type="str"/>
+        <field name="sender_address" type="str"/>
+        <field name="sender_ip" type="str"/>
+        <field name="sender_port" type="int"/>
+        <field name="rule_type" type="str"/>
+        <field name="rule_level" type="str"/>
+        <field name="domain" type="str"/>
+        <field name="cond_type" type="str"/>
+        <field name="cond_opt" type="str"/>
+        <field name="cond_value" type="str"/>
+        <field name="action_type" type="str"/>
+        <field name="action_args" type="str"/>
+        <field name="action_status" type="str"/>
+        <field name="action_result" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+          <rule class="StringMap" format="StringMap"
+                arguments="$date_time|owner_id|owner_type|mail_id|mail_size|mail_subject|mail_type|receiver|sender_address|sender_ip|sender_port|rule_type|rule_level|domain|cond_type|cond_opt|cond_value|action_type|action_args|action_status|action_result"/>
+        </format>
+      </table>
+
+      <!--记录邮件队列长度日志-->
+      <table name="log_mail_queue" appenders="daily_path,database">
+        <database pool="default" table="log_mail_queue"/>
+        <field name="datetime" type="date"/>
+        <field name="server_name" type="str"/>
+        <field name="service_name" type="str"/>
+        <field name="service_ip" type="str"/>
+        <field name="service_port" type="int"/>
+        <field name="queue_len" type="int"/>
+        <field name="undo_len" type="int"/>
+        <format class="generic">
+          <rule class="StringMap" format="StringMap"
+                arguments="$date_time|server_name|service_name|service_ip|service_port|queue_len|undo_len"/>
+        </format>
+      </table>
+
+      <!--记录用户被审计-->
+      <table name="log_mail_audit" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="server_name" type="str"/>
+        <field name="service_name" type="str"/>
+        <field name="service_ip" type="str"/>
+        <field name="service_port" type="int"/>
+        <field name="client_ip" type="str"/>
+        <field name="client_port" type="int"/>
+        <field name="result" type="str"/>
+        <field name="result_desc" type="str"/>
+        <format class="generic">
+          <rule class="StringMap" format="StringMap"
+                arguments="$date_time|server_name|service_name|service_ip|service_port|client_port|result|result_desc"/>
+        </format>
+      </table>
+
+      <!--短信交互日志-->
+      <table name="smac_interact" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="type" type="str"/>
+        <field name="spid" type="str"/>
+        <field name="from" type="str"/>
+        <field name="to" type="str"/>
+        <field name="content" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <!--邮件列表投递相关日志-->
+      <table name="mlist_action" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="mlist_action" type="str"/>
+        <field name="source" type="str"/>
+        <field name="user_id" type="int"/>
+        <field name="subject" type="str"/>
+        <field name="from_address" type="str"/>
+        <field name="folder_id" type="int"/>
+        <field name="file_name" type="str"/>
+        <field name="mail_size" type="long"/>
+        <field name="mlist_id" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="mlist_sent" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="mlist_id" type="str"/>
+        <field name="parent_id" type="str"/>
+        <field name="user_id" type="int"/>
+        <field name="mlist_count" type="long"/>
+        <field name="task_id" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="mlist_unsent" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="mlist_id" type="str"/>
+        <field name="parent_id" type="str"/>
+        <field name="user_id" type="int"/>
+        <field name="msg" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="mlist_status" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="task_id" type="str"/>
+        <field name="user_id" type="int"/>
+        <field name="mlist_count" type="long"/>
+        <field name="sent_count" type="long"/>
+        <field name="mlist_id" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <!--短信扣费相关日志-->
+      <table name="sms_payment_in" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="msg_id" type="str"/>
+        <field name="mobile" type="str"/>
+        <field name="service_code" type="str"/>
+        <field name="template_name" type="str"/>
+        <field name="msg_queue" type="str"/>
+        <field name="msg_status" type="str"/>
+        <field name="msg_times" type="str"/>
+        <field name="create_time" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="sms_payment_send" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="msg_id" type="str"/>
+        <field name="mobile" type="str"/>
+        <field name="service_code" type="str"/>
+        <field name="template_name" type="str"/>
+        <field name="msg_queue" type="str"/>
+        <field name="msg_status" type="str"/>
+        <field name="msg_times" type="str"/>
+        <field name="create_time" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="sms_payment_send_ok" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="msg_id" type="str"/>
+        <field name="mobile" type="str"/>
+        <field name="service_code" type="str"/>
+        <field name="template_name" type="str"/>
+        <field name="msg_queue" type="str"/>
+        <field name="msg_status" type="str"/>
+        <field name="msg_times" type="str"/>
+        <field name="create_time" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="sms_payment_send_ft" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="msg_id" type="str"/>
+        <field name="mobile" type="str"/>
+        <field name="service_code" type="str"/>
+        <field name="template_name" type="str"/>
+        <field name="msg_queue" type="str"/>
+        <field name="msg_status" type="str"/>
+        <field name="msg_times" type="str"/>
+        <field name="create_time" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="sms_payment_pay_ok" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="msg_id" type="str"/>
+        <field name="mobile" type="str"/>
+        <field name="service_code" type="str"/>
+        <field name="template_name" type="str"/>
+        <field name="msg_queue" type="str"/>
+        <field name="msg_status" type="str"/>
+        <field name="msg_times" type="str"/>
+        <field name="create_time" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="sms_payment_pay_ft" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="msg_id" type="str"/>
+        <field name="mobile" type="str"/>
+        <field name="service_code" type="str"/>
+        <field name="template_name" type="str"/>
+        <field name="msg_queue" type="str"/>
+        <field name="msg_status" type="str"/>
+        <field name="msg_times" type="str"/>
+        <field name="create_time" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+
+      <table name="bill_make_filter" appenders="daily_path">
+        <field name="datetime" type="date"/>
+        <field name="purchase_id" type="str"/>
+        <field name="pay_account" type="str"/>
+        <field name="business_account_id" type="str"/>
+        <field name="template_name" type="str"/>
+        <field name="is_same_purchase" type="str"/>
+        <field name="filter_voucher_status" type="str"/>
+        <field name="purchase_date" type="str"/>
+        <format class="generic">
+          <rule class="List" format="list" arguments="$date_time|$each"/>
+        </format>
+      </table>
+    </tables>
+  </journal>
+
+</xml-config>

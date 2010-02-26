@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-config>
+  <schedule>
+    <sources>
+      <source name="mlist" type="nmq">
+        <config>
+          <property name="persistent" value="true"/>
+          <property name="path" value="${CENO_HOME}/queue/umail/mlist"/>
+        </config>
+      </source>
+    </sources>
+  </schedule>
+</xml-config>

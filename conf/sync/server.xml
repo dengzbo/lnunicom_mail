@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="GBK"?>
+<xml-config>
+  <schedule>
+    <schedulers>
+      <scheduler name="sync"
+                 type="com.ceno.commons.frame.sync.schedule.SyncScheduleServer"/>
+      <scheduler name="sync_retry"
+                 type="com.ceno.commons.frame.sync.schedule.SyncScheduleServer"/>
+    </schedulers>
+
+    <sources>
+      <source name="sync_task"
+              type="com.ceno.commons.frame.sync.schedule.SyncTaskQueue">
+        <config>
+          <property name="monitor_time" value="* * * * *"/>
+          <property name="path" value="${CENO_HOME}/queue/umail/sync"/>
+          <property name="interval" value="1000"/>
+          <property name="batch_size" value="50"/>
+        </config>
+      </source>
+    </sources>
+  </schedule>
+
+  <sync>
+    <pipes>
+        <pipe name="common" class="com.ceno.commons.frame.sync.base.BaseSyncPipe">
+            <filter class="com.ceno.commons.frame.sync.filter.SyncEchoFilter"></filter>
+        </pipe>
+        <pipe name="mobile_status" class="com.ceno.commons.frame.sync.base.BaseSyncPipe">
+            <filter class="com.ceno.admin.sync.filter.SetDomainNameFilter" domain="naesasoft.com"></filter>
+            <filter class="com.ceno.admin.sync.filter.AccountCheckFilter"></filter>
+        </pipe>
+        <pipe name="business_account" class="com.ceno.commons.frame.sync.base.BaseSyncPipe">
+            <filter class="com.ceno.admin.sync.filter.SetDomainNameFilter" domain="naesasoft.com"></filter>
+        </pipe>
+        <pipe name="retry" class="com.ceno.commons.frame.sync.base.BaseSyncPipe">
+            <filter class="com.ceno.commons.frame.sync.filter.RetryTimeoutFilter"/>
+        </pipe>
+    </pipes>
+
+    <rule>
+        <condition name="business_account_send" type="java"
+                   method="getInt" field="operate_type" value="8" cond="equal"></condition>
+        <condition name="mail_system_send" type="java"
+                   method="getInt" field="operate_type" value="8" cond="not_equal"></condition>
+
+        <conditions name="mail_receive_business_account">
+            <condition name="business_account_send"/>
+        </conditions>
+
+        <conditions name="foreign_receive_business_account">
+            <condition name="mail_system_send"/>
+        </conditions>
+    </rule>
+
+    <groups>
+        <group name="admin">
+            <client name="app"/>
+        </group>
+        <group name="webmail">
+            <client name="app"/>
+        </group>
+    </groups>
+
+    <messages>
+        <pipe messageType="mobile_status" name="mobile_status"/>
+        <pipe messageType="business_account" name="business_account"/>
+
+        <subscriber messageType="mobile_status" name="admin" type="group"
+                select="any"/>
+
+        <subscriber messageType="business_account" name="admin" type="group"
+                conds="mail_receive_business_account" select="any"/>
+
+    </messages>
+  </sync>
+</xml-config>  

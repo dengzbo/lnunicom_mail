@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-config>
+    
+  <jade-conf>
+    <property name="naisa.payments.mobile.payment_db_pool.batch_size" value="5"/>
+    <property name="naisa.payment.engine.pay_db_pool_eng.startup" value="true"/>
+  </jade-conf>
+
+  <payments>
+<!--
+    <gateway name="mobile_bind"
+      type="sms"
+      uri="cmpp3://888899:888899@192.168.6.48:7891"
+      mode="3"
+      spid="888899"
+      from="2662179799"
+      delivery="2"
+      feeType="03"
+      content="business fee"
+      >
+    </gateway>
+-->
+
+<!--
+    <gateway name="mobile_bind"
+      type="test"
+      feedback="true"
+      status="1"
+      feedbackStatus="3"
+      >
+    </gateway>
+-->    
+
+  </payments>
+</xml-config>
+

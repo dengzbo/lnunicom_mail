@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="GBK"?>
+<Structure type="geographic_areas">
+    <CountryRegion code="86" id="CHN">
+        <Range prefix="*" numberType="geographic" operator="chinatelecom" regexp="(1181010|28639055|62672000|62672001|62672002|62672003|50441612|50441618|50441619)">
+            <Range prefix="21" areaCode="21" provinceId="0002" cityId="002001" minLen="3" maxLen="20"/>
+        </Range>
+    </CountryRegion>
+</Structure>

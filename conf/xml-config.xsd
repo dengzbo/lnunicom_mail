@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<xs:schema xmlns="http://www.ceno.cn/xml/config" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ceno.cn/xml/config" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="xml-config">
+		<xs:annotation>
+			<xs:documentation>Xml Config 根节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tag-def" minOccurs="0"/>
+				<xs:element ref="jade-conf" minOccurs="0"/>
+				<xs:element ref="config" minOccurs="0"/>
+				<xs:sequence minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="include" minOccurs="0"/>
+					<xs:any namespace="##other"/>
+				</xs:sequence>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tag-def">
+		<xs:annotation>
+			<xs:documentation>标记定义</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="tag" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attributeGroup ref="name-class"/>
+						<xs:attribute name="export" type="xs:boolean" use="optional" default="false"/>
+						<xs:attribute name="include" type="xs:boolean" use="optional" default="true"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="config">
+		<xs:annotation>
+			<xs:documentation>XML-CONFIG内部配置</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="property" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="file" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="jade-conf">
+		<xs:annotation>
+			<xs:documentation>JADE-CONFIG配置项</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="property" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="node" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="propertyType">
+		<xs:annotation>
+			<xs:documentation>属性项类型</xs:documentation>
+		</xs:annotation>
+		<xs:attributeGroup ref="name-value"/>
+	</xs:complexType>
+	<xs:simpleType name="baseName">
+		<xs:annotation>
+			<xs:documentation>基础节点名称</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-z]([a-z]|[0-9]|_)*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="className">
+		<xs:annotation>
+			<xs:documentation>Action类型</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="((([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]|_|$)*)\.)*(([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]|_|$)*)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attributeGroup name="name-class">
+		<xs:annotation>
+			<xs:documentation>名字和类名的属性组</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="baseName" use="required"/>
+		<xs:attribute name="class" type="className" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="name-value">
+		<xs:annotation>
+			<xs:documentation>名字和值的属性组</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="value" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+	<xs:element name="node">
+		<xs:annotation>
+			<xs:documentation>配置节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:element ref="property"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="property" type="propertyType">
+		<xs:annotation>
+			<xs:documentation>Property节点</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="include">
+		<xs:annotation>
+			<xs:documentation>Include节点</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="uri" type="xs:string" use="prohibited"/>
+			<xs:attribute name="file" type="xs:string" use="prohibited"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

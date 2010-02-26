@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xc:xml-config xmlns:xc="http://www.ceno.cn/xml/config"
+               xmlns="http://www.ceno.cn/cube"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="
+                   http://www.ceno.cn/xml/config
+                   xml-config.xsd
+                   http://www.ceno.cn/cube
+                   cube.xsd">
+  <xc:config>
+    <xc:property name="ceno" value="/ceno"/>
+    <xc:property name="umail" value="${ceno}/product/umail"/>
+    <xc:property name="conf" value="${umail}/conf"/>
+    <xc:property name="lib" value="${umail}/lib"/>
+    <xc:property name="conf" value="${umail}/conf"/>
+    <xc:property name="report" value="${umail}/report"/>
+    <!--<xc:property name="ibis" value="${umail}/ibis"/>-->
+    <xc:property name="httpd" value="${ceno}/product/httpd"/>
+    <xc:property name="umta" value="${umail}/umta" />
+    <xc:property name="api" value="${umail}/api"/>
+    <xc:property name="push" value="${umail}/push"/>
+    <xc:property name="pimapd" value="${umail}/pimapd"/>
+    <xc:property name="journal.home" value="${ceno}/journal/umail"/>
+    <xc:property name="tomcat.home" value="${ceno}/product/tomcat"/>
+    <xc:property name="tomcat.base" value="${umail}/tomcat"/>
+  </xc:config>
+  <main>
+    <default>
+      <boot>
+        <env name="ADF_SCRIPT_NAME" value="umail"/>
+        <env name="BACKUP_HOME" value="${ceno}/backup/umail"/>
+        <env name="JAVA_LOG_HOME" value="${umail}/log"/>
+        <env name="JAVA_PID_HOME" value="${umail}/var/pid"/>
+        <java>
+          <jdk home="$JAVA_HOME"/>  
+          <supervisor base="${lib}/native/${osid}" name="jnohup"/>
+          <user name="ares"/>
+          <rotatelogs pattern="$JAVA_LOG_HOME/%Y-%m-%d/%n.log"/>
+          <vm-mode mode="server"/>
+          <memory min="32m" max="128m"/>
+          <logger priority="DEBUG"/>
+          <property name="file.encoding" value="8859_1"/>
+          <property name="java.library.path" value="${lib}/native/${osid}"/>
+          <!--<property name="IBIS_HOME" value="${ibis}"/>-->
+          <property name="CENO_HOME" value="${ceno}"/>
+          <property name="UMAIL_HOME" value="${umail}"/>
+          <property name="ARES_HOME" value="${umail}"/>
+          <property name="TEMP_HOME" value="${umail}/temp"/>
+          <property name="JOURNAL_HOME" value="${ceno}/journal"/>
+          <property name="com.ceno.util.auth.default_encryption" value="md5base64"/>
+          <property name="java.net.preferIPv4Stack" value="true"/>
+          <classpath file="${lib}/common/bsh.jar"/>
+          <classpath file="${lib}/common/xerces.jar"/>
+          <classpath file="${lib}/common/poi.jar"/>
+          <classpath file="${lib}/common/j2ee.jar"/>
+          <classpath file="${lib}/common/velocity.jar"/>
+          <classpath file="${lib}/common/cglib.jar"/>
+          <classpath file="${lib}/common/hibernate.jar"/>
+          <classpath file="${lib}/jdom.jar"/>
+          <classpath file="${lib}/common/ceno-base.jar"/>
+          <classpath file="${lib}/umail-txP0011-V1.7.1.jar"/>
+          <classpath file="${lib}/common/framework-patch.jar"/>
+          <classpath file="${lib}/common/framework.jar"/>
+          <classpath file="${lib}/common/ceno-modules.jar"/>
+          <classpath file="${lib}/common/message.jar"/>
+          <classpath file="${lib}/common/nmq.jar"/>
+          <classpath file="${lib}/common/ceno-orm.jar"/>
+          <classpath file="${lib}/common/naisa-api-client.jar"/>
+          <classpath file="${lib}/umail-base-20100119.jar"/>
+          <classpath file="${lib}/umail-base-1.8.2-P0001.jar"/>
+          <classpath file="${lib}/umail-base.jar"/>
+          <!--classpath file="${lib}/common/nutlet.jar"/-->
+          <classpath file="${lib}/license.jar"/>
+          <classpath file="${lib}/jdbc/9.2.0.5/ojdbc14.jar"/>
+        </java>
+      </boot>
+    </default>
+    <servers>
+
+      <server type="webmail" port="9168">
+        <boot>
+          <java>
+            <debug port="5003"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${conf}/webmail.conf"/>
+        <config file="${conf}/domain.conf"/>
+        <config file="${conf}/logger.xml"/>
+        <classpath file="${lib}/umail-tx-20100119.jar"/>
+        <classpath file="${lib}/umail-base.jar"/>
+        <classpath file="${lib}/umail-tx-1.8.2-P0001.jar"/>
+        <classpath file="${lib}/umail-tx-1.8.2-P0002.jar"/>
+        <!--<classpath file="${lib}/umail-tx-1.8.2-P0003.jar" run="true"/>-->
+        <classpath file="${lib}/umail-tx.jar" run="true"/>
+        <classpath file="${lib}/umail-admin.jar"/>
+        <classpath file="${lib}/umail-business.jar" run="webmail,orm"/>
+        <classpath file="${lib}/umail-sms.jar" run="webmail"/>
+        <classpath file="${lib}/umail-wap.jar" run="webmail"/>
+        <classpath file="${lib}/umail-office.jar" run="webmail"/>
+        <classpath file="${lib}/common/storage.jar" run="webmail"/>
+        <classpath file="${lib}/wfs.jar" run="webmail"/>
+        <classpath file="${lib}/wfs-mail-plugin.jar" run="webmail"/>
+        <classpath file="${lib}/umail-payments.jar" run="mailcardapp"/>
+        <classpath file="${lib}/smg.jar"/>
+        <classpath file="${lib}/common/ceno-jai.jar"/>
+        <classpath file="${lib}/common/jtranscoding.jar"/>
+        <classpath file="${lib}/common/ceno-commons.jar" run="client"/>
+        <classpath file="${lib}/common/commons.jar"/>
+        <!-- customize start  -->
+        <!-- add for ap-->
+        <classpath file="${lib}/lncnc/customize-lncnc-base.jar" run="webmail"/>
+        <!-- end ap-->
+        <!--classpath file="${lib}/lncnc/customize-lncnc-webmail.jar"/-->
+        <classpath file="${push}/lib/pap/commons-codec-1.3.jar"/>
+        <classpath file="${api}/lib/commons-httpclient-3.0.1.jar"/>
+        <classpath file="${lib}/lncnc/customize-lncnc-addressbook.jar" run="webmail"/>
+        <classpath file="${lib}/lncnc/customize-lncnc-vdisk.jar"/> 
+        <config file="${conf}/customize/lncnc.conf"/>
+        <config file="${conf}/customize/customize_lncnc_webmail.xml"/>
+        <classpath file="${lib}/mail-addressbook.jar"/>
+        <config file="${conf}/addrbook/core.xml"/>
+        <config file="${conf}/addrbook/webmail.xml"/>
+        <config file="${conf}/addrbook/addrbook.xml"/>
+        <config file="${conf}/addrbook/orm.xml"/>
+
+        <config file="${conf}/notifier.xml"/>
+        <config file="${conf}/users_plugin.xml"/>
+        <config file="${conf}/rule_mail_coin.xml"/>
+        <config file="${conf}/telecom/telecom.xml"/>
+        <config file="${conf}/telecom/telecom_number.conf"/>
+        <config file="${conf}/telecom/zone.xml"/>
+        <config file="${conf}/sync/webmail.xml"/>
+      </server>
+
+      <server type="admin" port="9368">
+        <boot>
+          <java>
+            <debug port="5004"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${conf}/admin.conf"/>
+        <config file="${conf}/logger.xml"/>
+        <classpath file="${lib}/common/ceno-modules.jar" run="schedule_client"/>
+        <classpath file="${lib}/umail-base.jar"/>
+        <classpath file="${lib}/umail-admin.jar" run="true"/>
+        <classpath file="${lib}/umail-business.jar" run="orm,admin"/>
+        <classpath file="${lib}/umail-sms.jar" run="admin"/>
+        <classpath file="${lib}/umail-office.jar" run="admin"/>
+        <classpath file="${lib}/common/storage.jar" run="admin"/>
+        <classpath file="${lib}/wfs.jar" run="admin"/>
+        <classpath file="${lib}/wfs-mail-plugin.jar"/>
+        <classpath file="${lib}/umail-payments.jar" run="mailcardapp"/>
+        <classpath file="${lib}/smg.jar"/>
+        <classpath file="${lib}/common/ceno-commons.jar" run="client"/>
+        <classpath file="${lib}/common/commons.jar"/>
+        <!-- add for ap-->
+        <classpath file="${lib}/lncnc/customize-lncnc-base.jar"/> 
+         
+        <!-- the enterprise address book  -->
+        <classpath file="${lib}/lncnc/customize-lncnc-addressbook.jar" run="admin"/>
+        <classpath file="${lib}/mail-addressbook.jar"/>
+        <config file="${conf}/addrbook/core.xml"/>
+        <config file="${conf}/addrbook/admin.xml"/>
+        <config file="${conf}/addrbook/addrbook.xml"/>
+        <config file="${conf}/addrbook/orm.xml"/>
+          
+        <config file="${conf}/users_plugin.xml"/>
+        <config file="${conf}/users_factory.xml"/>
+        <config file="${conf}/notifier.xml"/>
+        <config file="${conf}/telecom/telecom.xml"/>
+        <config file="${conf}/telecom/telecom_number.conf"/>
+        <config file="${conf}/telecom/zone.xml"/>
+        <config file="${conf}/sync/admin.xml"/>
+        <!-- add for ap -->
+        <config file="${conf}/customize/lncnc.conf"/>
+        <config file="${conf}/customize/customize_lncnc_admin.xml"/>
+        <connection host="*" server="logserver"/>
+        <connection host="*" server="task"/>
+        <connection host="*" server="mlist"/>
+      </server>
+
+      <server type="smac" port="9968">
+        <boot>
+          <java>
+            <debug port="5001"/>
+          </java>
+        </boot>
+        <config file="${conf}/smac.conf"/>
+        <classpath file="${lib}/smg.jar"/>
+        <classpath file="${lib}/smac.jar" run="standalone"/>
+        <classpath file="${lib}/common/commons.jar"/>
+      </server>
+
+      <server type="logserver" port="9568">
+        <boot>
+          <java>
+            <debug port="5009"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${conf}/journal.conf"/>
+        <config file="${conf}/journal.xml"/>
+        <config file="${conf}/customize/apjournal.xml"/>
+        <config file="${api}/conf/api-journal.xml"/>
+        <config file="${push}/conf/journal.xml"/>
+      </server>
+
+      <server type="dbmid" port="9768">
+        <boot>
+          <java>
+            <debug port="5005"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${conf}/dbmid.conf"/>
+        <config file="${conf}/domain.conf"/>
+        <config file="${conf}/antivirus.conf"/>
+        <classpath file="${lib}/common/ceno-modules.jar" run="schedule_client"/>
+        <classpath file="${lib}/common/naisa-api-server.jar"/>
+        <classpath file="${lib}/common/commons.jar"/>
+        <!--<classpath file="${lib}/umail-tx-1.8.2-P0003.jar"/>-->
+        <classpath file="${lib}/umail-dbmid.jar" run="true"/>
+        <classpath file="${lib}/umail-base.jar"/>
+        <classpath file="${lib}/umail-notice.jar" run="notice"/>
+        <classpath file="${lib}/smg.jar"/>
+        <config file="${conf}/notifier.xml"/>
+        <connection host="*" server="mlist"/>
+        <connection host="*" server="push"/>
+      </server>
+
+      <server type="mlist" port="9388">
+        <boot>
+          <java>
+            <debug port="5008"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <classpath file="${lib}/common/ceno-modules.jar" run="task_server;schedule_server"/>
+        <classpath file="${lib}/umail-base.jar"/>
+        <classpath file="${lib}/umail-mlist.jar" run="mlist"/>
+        <classpath file="${lib}/umail-business.jar" run="task;admin"/>
+        <config file="${conf}/mlist.xml"/>
+        <config file="${conf}/mlist.conf"/>
+        <connection host="*" server="logserver"/>
+      </server>
+
+      <server type="task" port="9188">
+        <boot>
+          <java>
+            <debug port="5012"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${conf}/task.conf"/>
+        <config file="${conf}/antivirus.conf"/>
+        <classpath file="${lib}/common/ceno-modules.jar" run="task_server;schedule_server;crontab"/>
+        <classpath file="${lib}/common/naisa-api-server.jar"/>
+        <classpath file="${lib}/umail-base.jar" run="task"/>
+        <classpath file="${lib}/umail-task.jar" run="task;stat"/>
+        <classpath file="${lib}/umail-business.jar" run="task;sync;admin;orm"/>
+        <classpath file="${lib}/umail-office.jar" run="schedule"/>
+        <classpath file="${lib}/umail-tx.jar"/>
+        <classpath file="${lib}/umail-sms.jar" run="task"/>
+        <classpath file="${lib}/wfs.jar" run="task"/>
+        <classpath file="${lib}/common/storage.jar"/>
+        <classpath file="${lib}/common/ceno-commons.jar" run="sync"/>
+        <classpath file="${lib}/smg.jar"/>
+        <classpath file="${lib}/common/jtranscoding.jar"/>
+        <classpath file="${lib}/common/ceno-jai.jar"/>
+        <classpath file="${lib}/common/commons.jar"/>
+
+        <config file="${conf}/notifier.xml"/>
+        <config file="${conf}/task.xml"/>
+        <config file="${conf}/sync/server.xml"/>
+        <connection host="*" server="logserver"/>
+        <connection host="*" server="webmail"/>
+        <connection host="*" server="mlist"/>
+      </server>
+
+      <server type="imapd" port="9868">
+        <boot>
+          <java>
+            <user name="root"/>
+            <debug port="5007"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${conf}/domain.conf"/>
+        <classpath file="${lib}/umail-imapd.jar" run="true"/>
+      </server>
+
+      <server type="api" port="9965">
+         <boot>
+          <java>
+            <debug port="5013"/>
+            <!--<classpath file="${ibis}/lib/ibis.jar"/>-->
+            <!--<classpath file="${ibis}/lib/crane.jar"/>-->
+            <property name="naisa.api.protocol" value="niep"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${api}/conf/api.xml"/>
+        <classpath file="${api}/lib/umail-api-mail-send.jar" run="run;api"/>
+        <classpath file="${lib}/common/naisa-api-server.jar"/>
+        <classpath file="${lib}/common/ceno-orm.jar"/>
+        <classpath file="${lib}/umail-admin.jar"/>
+        <classpath file="${lib}/umail-mlist.jar"/>
+        <classpath file="${lib}/umail-sms.jar"/>
+        <classpath file="${api}/lib/umail-business-api.jar"/>
+        <classpath file="${lib}/umail-business.jar" run="orm"/>
+        <classpath file="${api}/lib/backport-util-concurrent-2.2.jar"/>
+        <classpath file="${api}/lib/neethi-2.0.1.jar"/>
+        <classpath file="${api}/lib/annogen-0.1.0.jar"/>
+        <classpath file="${api}/lib/axis2-java2wsdl-1.2.jar"/>
+        <classpath file="${api}/lib/wsdl4j-1.6.2.jar"/>
+        <classpath file="${api}/lib/xmlsec-1.3.0.jar"/>
+        <classpath file="${api}/lib/XmlSchema-1.3.1.jar"/>
+        <classpath file="${api}/lib/commons-httpclient-3.0.1.jar"/>
+        <classpath file="${api}/lib/commons-fileupload-1.1.1.jar"/>
+        <classpath file="${api}/lib/axiom-dom-1.2.4.jar"/>
+        <classpath file="${api}/lib/axiom-impl-1.2.4.jar"/>
+        <classpath file="${api}/lib/axiom-api-1.2.4.jar"/>
+        <classpath file="${api}/lib/stax-api-1.0.1.jar"/>
+        <classpath file="${api}/lib/axis2-kernel-1.2.jar"/>
+        <classpath file="${api}/lib/oscore-2.2.5.jar"/>
+        <classpath file="${api}/lib/propertyset-1.4.jar"/>
+        <classpath file="${api}/lib/osworkflow-2.8.0.jar"/>
+        <classpath file="${api}/lib/osworkflow-ext.jar"/>
+        <classpath file="${api}/lib/umail-api.jar" run="run;api"/>
+        <classpath file="${api}/conf/workflow/"/>
+        <classpath file="${api}/conf/keys/"/>
+        <config file="${api}/conf/api.conf"/>
+        <connection host="*" server="logserver"/>
+        <connection host="*" server="webmail"/>
+        <connection host="*" server="admin"/>
+        <connection host="*" server="mlist"/>
+        <connection host="*" server="push"/>
+      </server>
+
+
+      <server type="business" port="9869">
+        <boot>
+          <java>
+            <debug port="5014"/>
+          </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <classpath file="${lib}/umail-business.jar" run="admin"/>
+        <classpath file="${lib}/smg.jar"/>
+        <classpath file="${lib}/common/ceno-modules.jar" run="task_server;schedule_server;crontab"/>
+        <classpath file="${lib}/umail-payments.jar" run="business;payment"/>
+        <config file="${conf}/business.xml"/>
+        <config file="${conf}/payment_gateway.xml"/>
+      </server>
+
+      <server type="httpd" port="80">
+        <boot>
+          <shell command="${httpd}/bin/apachectl" />
+        </boot>
+      </server>
+
+      <server type="umta" port="25">
+        <boot>
+          <shell command="${umta}/umtactl" />
+        </boot>
+      </server>
+
+       <server type="push" port="9400">
+        <boot>
+        <java>
+          <debug port="5400"/>
+          <memory min="64m" max="256m"/>
+          <property name="com.ceno.notification.queue.path" value="/ceno/queue/umail/"/>
+          <classpath file="${push}/lib/imeg-push.jar"/>
+          <classpath file="${push}/lib//ceno-wpp.jar"/>
+          <classpath file="${push}/lib/hermes.jar"/>
+          <classpath file="${push}/lib/ceno-commons.jar"/>
+          <classpath file="${push}/lib/commons-extend.jar"/>
+          <classpath file="${lib}/common/message.jar"/>
+          <classpath file="${lib}/common/commons.jar"/>
+          <classpath file="${lib}/smg.jar"/>
+          <classpath file="${push}/lib/pap/commons-codec-1.3.jar"/>
+          <classpath file="${push}/lib/pap/commons-httpclient.jar"/>
+          <classpath file="${push}/lib/pap/jcert.jar"/>
+          <classpath file="${push}/lib/pap/jnet.jar"/>
+          <classpath file="${push}/lib/pap/jsse.jar"/>
+          <classpath file="${push}/lib/pap/log4j.jar"/>
+          <classpath file="${push}/lib/pap/pop.jar"/>
+          <classpath file="${push}/lib/pap/sut.jar"/>
+        </java>
+        </boot>
+        <config file="${push}/conf/push-service.xml"/>
+        <config file="${push}/conf/push.xml"/>
+        <config url="jar:file://${umail}/push/lib/hermes.jar!/META-INF/nar/hermes.xml"/>
+      </server>
+
+      <server type="pimapd" port="9401">
+        <boot>
+        <java>
+          <debug port="5401"/>
+          <user name="ares"/>
+          <memory min="32m" max="64m"/>
+          <!--<jdk home="/ceno/product/jdk5"/>-->
+          <property name="hibernate.config" value="${pimapd}/conf/hibernate.xml"/>
+          <!--<property name="JOURNAL_HOME" value="${journal.home}/pimapd"/>-->
+          <classpath file="${pimapd}/lib/javaee.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-base.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-frame.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-frame-pimapd-patch.jar"  mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-modules.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/imeg-pimapd.jar"/>
+          <classpath file="${pimapd}/lib/ceno-net.jar"/>
+          <classpath file="${pimapd}/lib/message.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-commons.jar"/>
+          <classpath file="${pimapd}/lib/jtranscoding.jar"/>
+          <classpath file="${pimapd}/lib/ceno-orm.jar" mode="prepend"/>
+          <!--Hibernate-->
+          <classpath file="${pimapd}/lib/hibernate/hibernate.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/hibernate/antlr-2.7.6.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/hibernate/dom4j-1.6.1.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/hibernate/commons-collections-2.1.1.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/hibernate/ehcache-1.2.jar" mode="prepend"/>
+          <!--Transcoding-->
+          <classpath file="${pimapd}/lib/poi.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/jai.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-jai.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/log4j.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/pdfbox/pdfbox.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/pdfbox/checkstyle-all-4.2.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/pdfbox/FontBox-0.1.0-dev.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/pdfbox/lucene-core-2.0.0.jar" mode="prepend"/>
+        </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${pimapd}/conf/journal/journal.conf"/>
+        <config file="${pimapd}/conf/pimapd.xml"/>
+        <!--<config file="${pimapd}/conf/journal/journal-service.xml"/>-->
+        <!--<config file="${pimapd}/conf/journal/journal-table.xml"/>-->
+        <config file="${pimapd}/conf/common/uaprof/uaprof.xml"/>
+        <config file="${pimapd}/conf/jtranscoding/jtranscoding.conf"/>
+        <config file="${pimapd}/conf/userauth/service.conf"/>
+      </server>
+
+      <server type="log4pimapd" port="9402">
+        <boot>
+        <java>
+          <!--<jdk home="/ceno/product/jdk5"/>-->
+          <property name="JOURNAL_HOME" value="${journal.home}/pimapd"/>
+          <debug port="5402"/>
+          <memory min="32m" max="64m"/>
+          <classpath file="${pimapd}/lib/javaee.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-base.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-frame.jar" mode="prepend"/>
+          <classpath file="${pimapd}/lib/ceno-modules.jar" mode="prepend"/>
+        </java>
+        </boot>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${pimapd}/conf/journal/journal-table.xml"/>
+        <config file="${pimapd}/conf/journal/journal-service.xml"/>
+        <connection host="*" server="pimapd"/>
+      </server>
+
+	<server type="webserver" port="9268">
+	<boot>
+          <java>
+            <memory min="32m" max="128m"/>
+            <logger priority="INFO"/>
+            <boot-classpath file="${lib}/common/pja.jar" mode="append"/>
+            <debug port="5002"/>            
+            <property name="java.awt.headless" value="true"/>
+            <property name="naisa.api.protocol" value="serialization"/>
+
+	    <property name="ceno.report.dbconn" value="default"/>
+	    <property name="catalina.home" value="${tomcat.home}"/>
+            <property name="catalina.base" value="${tomcat.base}"/>
+	        <property name="ceno.mail.manager.implement" value="web"/>
+            <property name="java.util.logging.config.file" value="${tomcat.base}/conf/logging.properties"/>
+            <property name="java.util.logging.manager" value="org.apache.juli.ClassLoaderLogManager"/>
+            <property name="applicationRoot" value="${umail}"/>
+            <property name="jpf.boot.config" value="${umail}/plugin/webserver/plugins.properties"/>
+            <property name="jpf.boot.mode" value="start"/>
+
+            <classpath file="${tomcat.home}/bin/commons-logging-api.jar"/>
+            <classpath file="${tomcat.home}/bin/bootstrap.jar"/>
+            <classpath file="${lib}/common/ceno-ext-tomcat-boot.jar"/> 
+            
+            <!-- the enterprise address book  -->
+            <!--classpath file="${lib}/lncnc/customize-lncnc-webmail.jar"/-->
+            <classpath file="${lib}/lncnc/customize-lncnc-addressbook.jar"/>
+            <classpath file="${lib}/lncnc/customize-lncnc-vdisk.jar"/>
+            <classpath file="${lib}/mail-addressbook.jar"/>
+            <config file="${conf}/addrbook/web.xml"/>
+            <config file="${conf}/addrbook/addrbook.xml"/>
+            <config file="${conf}/addrbook/orm.xml"/>
+            <!-- add end -->
+            
+            <!--<classpath file="${ibis}/lib/jasper-compiler-jdt.jar"/>-->
+            <!--<classpath file="${ibis}/lib/ibis-2.6.6-P0001.jar"/>-->
+            <!--<classpath file="${ibis}/lib/crane.jar"/>-->
+            <!--<classpath file="${ibis}/lib/jstl.jar"/>-->
+	        <!--<classpath file="${ibis}/lib/spider.jar"/>-->
+
+
+            <classpath file="${lib}/common/naisa-api-server.jar"/>
+            <classpath file="${lib}/common/ceno-rum.jar"/>
+
+            <classpath file="${lib}/umail-business.jar"/>
+            <classpath file="${lib}/common/storage.jar"/>
+            
+            <!-- add for ap -->
+            <classpath file="${lib}/lncnc/url-security.jar"/>
+            <classpath file="${lib}/lncnc/customize-lncnc-ap.jar"/>
+            <classpath file="${lib}/axis/axis.jar"/>
+            <classpath file="${lib}/axis/commons-discovery-0.2.jar"/>
+            <classpath file="${lib}/axis/commons-logging-1.0.4.jar"/>
+            <classpath file="${lib}/axis/jaxrpc.jar"/> 
+            <classpath file="${lib}/axis/log4j-1.2.8.jar"/>
+            <classpath file="${lib}/axis/wsdl4j-1.5.1.jar"/>
+
+        </java>
+        </boot>
+        <config file="${report}/conf/report.xml"/>
+        <config file="${conf}/jeton.conf"/>
+        <config file="${conf}/web.conf"/>
+        <config file="${conf}/webmail.conf"/>
+        <config file="${conf}/admin.conf"/>
+        <config file="${conf}/domain.conf"/>
+        <config file="${conf}/checkcode.conf"/>
+        <classpath file="${lib}/umail-base.jar" run="web"/>
+        <classpath file="${lib}/umail-tx.jar" run="web"/>
+        <classpath file="${lib}/umail-admin.jar"/>
+        <!-- classpath file="${lib}/umail-business.jar" run="web"/ -->
+        <classpath file="${lib}/umail-sms.jar" run="web"/>
+        <classpath file="${lib}/umail-office.jar" run="web"/>
+        <classpath file="${lib}/wfs.jar"/>
+        <classpath file="${lib}/wfs-mail-plugin.jar" run="web"/>
+        <!-- classpath file="${lib}/common/ceno-rum.jar"/ -->
+        <classpath file="${lib}/umail-payments.jar" run="mailcardweb;mobile"/>
+        <classpath file="${lib}/common/naisa-api-server.jar"/>
+        <!-- classpath file="${lib}/common/jtranscoding.jar"/ -->
+        <classpath file="${lib}/common/ceno-jai.jar"/>
+        <classpath file="${lib}/common/pdfbox.jar"/>
+        <classpath file="${lib}/common/commons.jar"/>
+        <classpath file="${lib}/common/ceno-commons.jar"/>
+        <!--<config file="${ibis}/conf/ibis.conf"/>-->
+        <!--<config file="${ibis}/conf/ibis.xml"/>-->
+        <config file="${conf}/telecom/telecom.xml"/>
+        <config file="${conf}/telecom/telecom_number.conf"/>
+        <config file="${conf}/telecom/zone.xml"/>
+        <config file="${conf}/role_policy.xml"/>
+        <config file="${conf}/role_relation_factory.xml"/>
+        <connection host="*" server="webmail"/>
+        <connection host="*" server="admin"/>
+        <connection host="*" server="task"/>
+     </server>
+    </servers>
+
+    <hosts>
+      <host name="node2" address="192.168.8.210">
+        <server type="webmail"/>
+        <server type="admin"/>
+        <server type="logserver"/>
+        <server type="imapd"/>
+        <server type="dbmid"/>
+        <server type="httpd" />
+        <server type="umta"/>
+        <server type="smac"/>
+        <server type="api"/>
+        <server type="task"/>
+        <server type="mlist"/>
+        <server type="business"/>
+        <server type="push"/>
+        <server type="pimapd"/>
+        <server type="log4pimapd"/>
+        <server type="webserver"/>
+      </host>
+    </hosts>
+
+  </main>
+</xc:xml-config>
+

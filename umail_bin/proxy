@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ARES_LIB=/ceno/product/umail/lib/common
+java -cp $ARES_LIB/ceno-base.jar:$ARES_LIB/ceno-modules.jar:$ARES_LIB/naisa-tools.jar naisa.tools.net.DebugProxy $*
+

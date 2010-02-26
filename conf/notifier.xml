@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-config>
+  <config>
+    <property name="home" value="{UMAIL_HOME}"/>
+    <property name="template" value="${home}/conf/template"/>
+  </config>
+  <jade-conf>
+    <property name="naisa.smg.cmpp3.connection.msg_codec.class"  value="naisa.sms.cmpp3.Cmpp3MessageCodec"/>
+    <property name="naisa.tools.notifier.cellphone.protocol"  value="naisa.sms.protocol.NotifierProtocol"/>
+    <property name="naisa.tools.notifier.telephone.protocol" value="naisa.sms.protocol.NotifierProtocol"/>
+    <property name="naisa.sms.default" value="cmpp3://888888:888888@127.0.0.1:7891"/>
+    <property name="naisa.sms.mode" value="2"/>
+    <property name="naisa.sms.default_client" value="true"/>
+    <property name="naisa.calendar.service_code" value="HELP"/>
+    <property name="ceno.mail.sms.regverify_code" value="HELP"/>
+    <property name="ceno.mail.sms.apply_code" value="HELP"/>
+    <property name="ceno.mail.sms.edit_code" value="HELP"/>
+    <property name="ceno.mail.sms.notify_code" value="HELP"/>
+    <property name="naisa.dbmid.sms.service_code" value="HELP"/>
+    <property name="naisa.tools.notifier.email.smtp_host" value="127.0.0.1"/>
+    <property name="naisa.mail.antivirus.template" value="${template}"/>
+  </jade-conf>
+  <velocity>
+    <paths>
+      <path name="${template}/zh_cn"/>
+    </paths>
+  </velocity>
+  <notifier>
+    <templates>
+      <template name="sms" type="cellphone" template="arrived_notifier.vm"/>
+      <template name="wfs_sms" type="cellphone" template="wfs_sms.vm"/>
+      <template name="wfs_email" type="email" template="wfs_email.vm"/> 
+      <template name="password" type="cellphone" template="password.vm"/>
+      <template name="message" type="cellphone" template="message.vm"/>
+      <template name="sms" type="telephone" template="arrived_notifier.vm"/>
+      <template name="password" type="telephone" template="password.vm"/>
+      <template name="message" type="telephone" template="message.vm"/>
+      <template name="reg_verify" type="cellphone" template="verify_notify.vm"/>
+      <template name="ent_notify" type="cellphone" template="entreg_notify.vm"/>
+      <template name="payment" type="cellphone" template="payment.vm"/>
+      <template name="payfee" type="cellphone" template="payfee.vm"/>
+      <template name="cal_emailnotify" type="email" template="calmail_notify.vm"/>
+      <template name="cal_smsnotify" type="cellphone" template="calsms_notify.vm"/>
+      <template name="reg_notify" type="cellphone" template="reg_notify.vm"/>
+      <template name="dbmid_notify" type="cellphone" template="sms.vm"/>
+      <template name="dbmid_notify" type="telephone" template="sms.vm"/>
+    </templates>
+  </notifier>
+  
+  <notice>
+    <service>
+      <gateway name="sms" type="sms" spid="888888" from="1000888" feeType="03"/>
+      <channel name="mail_arrive">
+        <channel name="event" type="sref"/>
+      </channel>
+      <channel name="mail_arrive_out">
+         <!--handler name="echo"></handler-->
+         <!--  <handler name="smsnotifier"></handler>-->
+         <handler name="mail_arrival_notifier"></handler>  
+      </channel>
+    </service>
+  </notice>
+  
+</xml-config>
